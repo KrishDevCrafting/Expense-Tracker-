@@ -1,22 +1,30 @@
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Login from "./pages/Auth/login";
+import SignUp from "./pages/Auth/signUp";
+import Income from "./Dashboard/Income";
+import Home from "./Dashboard/Home";
+import Expense from "./Dashboard/Expense";
 
 function App() {
   return (
     <>
       <div>
-        <h1 style={{ color: "red" }}>F1</h1>
-        <p className="text-2xl">
-          F1 is the most risky and expensive sport where the racer driver their
-          car around 300km/hr speed! Formula 1 teams invest millions in
-          technology and safety to compete at the highest level. The sport is
-          known for its thrilling races, advanced engineering, and passionate
-          fanbase. Drivers require exceptional skill, quick reflexes, and
-          intense physical fitness to handle the demands of racing at such high
-          speeds.
-        </p>
-      </div>{" "}
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signUp" element={<SignUp />} />
+            <Route path="/dashboard" element={<Home />} />
+            <Route path="/income" element={<Income />} />
+            <Route path="/expense" element={<Expense />} />
+          </Routes>
+        </Router>
+      </div>
     </>
   );
 }
