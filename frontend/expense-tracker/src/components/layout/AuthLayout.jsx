@@ -15,7 +15,7 @@ const AuthLayout = ({ children }) => {
         
         "
         >
-          <div className="w-48 h-48 rounded-[40px] bg-purpule-600 absolute -top-7 -left-5" />
+          <div className="w-48 h-48 rounded-[40px] bg-purple-600 absolute -top-7 -left-5" />
           <div className="" />
           <div className="" />
 
