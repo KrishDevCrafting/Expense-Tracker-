@@ -1,14 +1,32 @@
 import React from "react";
 import AuthLayout from "../../components/layout/AuthLayout";
 import { useNavigate } from "react-router-dom";
+import Input from "../../components/layout/Inputs/Inputs";
 import { LuTarget } from "react-icons/lu";
 const Login = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
+
+
+
+
+
+
+
+   //  Handle Login Foprm Submit!!
+
+   const handleLogin = async (e)=>{
+
+   }
+
+
+
+
+
   return (
-    //  Handle Login Foprm Submit!!
+ 
     <>
       <AuthLayout>
         <div className="lg:w-[70%] md:h-full flex flex-col justify-center">
@@ -17,7 +35,7 @@ const Login = () => {
             please enter your details to log in
           </p>
 
-          <form action="" onSubmit={handleleLogin}>
+          <form action="" onSubmit={handleLogin}>
             <Input
               value={email}
               onChange={({ target }) => setEmail(target.value)}
