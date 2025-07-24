@@ -1,5 +1,7 @@
 import React from "react";
+import { LuTrendingUpDown } from "react-icons/lu"; // Add this import
 import CARD_2 from "../../assets/imgs/diagram.png";
+
 const AuthLayout = ({ children }) => {
   return (
     <>
@@ -18,14 +20,14 @@ const AuthLayout = ({ children }) => {
           <div className="w-48 h-56 rounded-[40px] border-[20px] border-fuchsia-600 absolute top-[30%] -right-10" />
           <div className="w-48 h-56 rounded-[40px] bg-violet-500 absolute -bottom-7 -left-5" />
 
-          {/* <div className="grid grid-cols-1 z-20">
-            <statsInfoCard
+          <div className="grid grid-cols-1 z-20">
+            <StatsInfoCard
               icon={<LuTrendingUpDown />}
               lebel="track YOur expense & income"
               value="430,000"
               color="bg-primary"
             />
-          </div> */}
+          </div>
           <img
             src={CARD_2}
             alt="img"
@@ -39,10 +41,13 @@ const AuthLayout = ({ children }) => {
 
 export default AuthLayout;
 
-const statsInfoCard = ({ icon, lebel, value, color }) => {
+const StatsInfoCard = ({ icon, lebel, value, color }) => {
   return (
     <>
-      <div>
+      <div
+        className="flex gap-6 bg-white p-4 rounded-xl shadow-rd shadow-purple-400/100
+      border-gray-200/50 z-10"
+      >
         <div
           className={`w-15 h-1 flex item-center justify-center text-[26px] text-white ${color} rounded-full drop-shadow-xl`}
         >
@@ -50,8 +55,8 @@ const statsInfoCard = ({ icon, lebel, value, color }) => {
         </div>
       </div>
       <div>
-        <h6 className="">{lebel}</h6>
-        <span>${value}</span>
+        <h6 className="text-xs text-gray-500 mb-1">{lebel}</h6>
+        <span className="text-[20px]">${value}</span>
       </div>
     </>
   );
