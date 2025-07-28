@@ -9,24 +9,11 @@ const Login = () => {
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
 
+  //  Handle Login Foprm Submit!!
 
-
-
-
-
-
-   //  Handle Login Foprm Submit!!
-
-   const handleLogin = async (e)=>{
-
-   }
-
-
-
-
+  const handleLogin = async (e) => {};
 
   return (
- 
     <>
       <AuthLayout>
         <div className="lg:w-[70%] md:h-full flex flex-col justify-center">
