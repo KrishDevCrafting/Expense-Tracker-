@@ -1,6 +1,6 @@
 import React from "react";
 import AuthLayout from "../../components/layout/AuthLayout";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/layout/Inputs/Inputs";
 import { LuTarget } from "react-icons/lu";
 const Login = () => {
@@ -30,6 +30,26 @@ const Login = () => {
               placeholder="Enter your email"
               type="email"
             />
+
+            <Input
+              value={password}
+              onChange={({ target }) => setPassword(target.value)}
+              label="Password"
+              placeholder="min 8 characters"
+              type="password"
+            />
+
+            {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
+            <button type="submit" className="btn-primary">
+              LOGIN
+            </button>
+
+            <p className="text-[13px] text-slate-800 mt-3">
+              Don't have an account?
+              <Link className="font-medium text-primary underline" to="/signup">
+                SignUp
+              </Link>
+            </p>
           </form>
         </div>
       </AuthLayout>
