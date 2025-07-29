@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AuthLayout from "../AuthLayout";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 const Input = ({ value, onChange, placeholder, label, type }) => {
   const [showPassword, setShowPassword] = useState(false);
