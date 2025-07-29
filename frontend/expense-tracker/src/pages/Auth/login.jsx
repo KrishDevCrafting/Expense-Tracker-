@@ -11,7 +11,20 @@ const Login = () => {
 
   //  Handle Login Foprm Submit!!
 
-  const handleLogin = async (e) => {};
+  const handleLogin = async (e) => {
+    if (!validEmail(email)) {
+      setError("please enter a valid email addres!");
+
+      return;
+    }
+    if (!password) {
+      setError("please enter the password!");
+      retur;
+    }
+    setError("");
+
+    // login APi call
+  };
 
   return (
     <>
