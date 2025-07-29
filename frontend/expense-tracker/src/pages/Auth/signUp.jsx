@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthLayout from "../../components/layout/AuthLayout";
 import Input from "../../components/layout/Inputs/Inputs"; // Add this import
-
+import { ProfilePhotoSelector } from "../../components/layout/Inputs/ProfilePhotoSelector";
 export default function SignUp() {
   const [profilePic, setProfilePic] = useState(null);
   const [fullName, setFullName] = useState(""); // Fix casing
@@ -24,6 +24,8 @@ export default function SignUp() {
           Join us Today by entering your details below.
         </p>
         <form onSubmit={handleSign}>
+          <ProfilePhotoSelector image={profilePic} setImage={setProfilePic} />
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Input
               value={fullName}
