@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import AuthLayout from "../../components/layout/AuthLayout";
 import Input from "../../components/layout/Inputs/Inputs"; // Add this import
 import { ProfilePhotoSelector } from "../../components/layout/Inputs/ProfilePhotoSelector";
@@ -13,7 +13,25 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   //handle sign up From Submit!!
-  const handleSign = async (e) => {};
+  const handleSign = async (e) => {
+    let profileImageURL = "";
+
+    if (!fullName) {
+      setError("Please enter your name");
+      return;
+    }
+
+    if (!ValidateEmail(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    if (!password) {
+      setError("please enter the password");
+      return;
+    }
+    setError("");
+    // Signup API call
+  };
 
   return (
     <AuthLayout>
@@ -51,6 +69,18 @@ export default function SignUp() {
               type="password"
             />
           </div>
+
+          {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
+          <button type="submit" className="btn-primary">
+            SIGN UP
+          </button>
+
+          <p className="text-[13px] text-slate-800 mt-3">
+            Already have an account?
+            <Link className="font-medium text-primary underline" to="/login">
+              Login
+            </Link>
+          </p>
         </form>
       </div>
     </AuthLayout>

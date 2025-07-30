@@ -12,6 +12,7 @@ const Login = () => {
   //  Handle Login Foprm Submit!!
 
   const handleLogin = async (e) => {
+    e.preventDefault();
     if (!validEmail(email)) {
       setError("please enter a valid email addres!");
 
