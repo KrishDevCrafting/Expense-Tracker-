@@ -18,7 +18,7 @@ const Login = () => {
 
       return;
     }
-    if (!password) {
+    if (!password) {  
       setError("please enter the password!");
       retur;
     }

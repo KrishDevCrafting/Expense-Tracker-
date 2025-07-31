@@ -36,7 +36,7 @@ export default function SignUp() {
   return (
     <AuthLayout>
       <div className="lg:w-[100%] h-auto md:h-full mt-10 md:mt-0 flex-col justify-center">
-        <h3 className="text-xs font-semibold text-black">Create an account</h3>{" "}
+        <h3 className="text-lg font-semibold text-black">Create an account</h3>{" "}
         {/* Fix class */}
         <p className="text-xs text-slate-700 mt-[5px] mb-6 ">
           Join us Today by entering your details below.
