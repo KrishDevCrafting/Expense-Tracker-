@@ -3,7 +3,7 @@ const connectDB = require("./config/db");
 require("dotenv").config();
 const cors = require("cors");
 const path = require("path");
-
+const authRoutes = require("./routes/authRoutes");
 const app = express();
 
 // Middleware
@@ -14,6 +14,20 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+// 👇 Route for showing server status on browser
+// app.get("/", (req, res) => {
+//   const PORT = process.env.PORT || 7000;
+//   res.send(`<h2>🚀 Localhost server is running at <a href="http://localhost:${PORT}">http://localhost:${PORT}</a></h2>`);
+// });
+
+app.get("/", (req, res) => {
+  const PORT = process.env.PORT || 7000;
+  res.send(`<h1>
+        Yayyy sever is running!
+        ${PORT}
+        </h1>`);
+});
 
 app.use(express.json());
 const PORT = process.env.PORT || 7000;
