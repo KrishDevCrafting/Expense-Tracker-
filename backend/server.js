@@ -7,6 +7,8 @@ const authRoutes = require("./routes/authRoutes");
 const app = express();
 
 // Middleware
+
+
 app.use(
   cors({
     origin: process.env.CLIENT_URL || "*",
@@ -15,11 +17,11 @@ app.use(
   })
 );
 
-// 👇 Route for showing server status on browser
-// app.get("/", (req, res) => {
-//   const PORT = process.env.PORT || 7000;
-//   res.send(`<h2>🚀 Localhost server is running at <a href="http://localhost:${PORT}">http://localhost:${PORT}</a></h2>`);
-// });
+app.use(express.json());
+
+app.use("/api/auth", authRoutes);
+
+connectDB();
 
 app.get("/", (req, res) => {
   const PORT = process.env.PORT || 7000;
@@ -29,6 +31,7 @@ app.get("/", (req, res) => {
         </h1>`);
 });
 
-app.use(express.json());
 const PORT = process.env.PORT || 7000;
 app.listen(PORT, () => console.log(`server is running on port ${PORT}`));
+
+
