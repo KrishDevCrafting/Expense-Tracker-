@@ -13,7 +13,7 @@ const generateToken = (id) => {
 };
 
 exports.registerUser = async (req, res) => {
-  const { fullName, name, password, email, profileImage } = req.body;
+  const { fullName, password, email, profileImage } = req.body;
 
   // Validation check for missing fields
   if (!fullName || !email || !password) {
