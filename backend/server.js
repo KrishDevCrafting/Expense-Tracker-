@@ -5,9 +5,8 @@ const cors = require("cors");
 const path = require("path");
 const authRoutes = require("./routes/authRoutes");
 const app = express();
-
+const incomeRoutes = require("./routes/incomeRoutes");
 // Middleware
-
 
 app.use(
   cors({
@@ -20,7 +19,7 @@ app.use(
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-
+app.use("/api/auth/income", incomeRoutes);
 connectDB();
 
 app.get("/", (req, res) => {
@@ -33,4 +32,3 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 7000;
 app.listen(PORT, () => console.log(`server is running on port ${PORT}`));
-
