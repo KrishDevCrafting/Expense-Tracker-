@@ -19,7 +19,7 @@ app.use(
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-app.use("/api/auth/income", incomeRoutes);
+app.use("/api/income", incomeRoutes);
 connectDB();
 
 app.get("/", (req, res) => {
