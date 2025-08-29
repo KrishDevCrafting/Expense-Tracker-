@@ -5,7 +5,7 @@ const {
   getAllIncome,
   deleteIncome,
   downloadIncomeExcel,
-} = require("../controller/");
+} = require("../controller/incomeController");
 
 const { protect } = require("../middleware/authMiddleware");
 
@@ -17,4 +17,4 @@ router.get("/get", protect, getAllIncome);
 router.get(".downloadexcel", protect, downloadIncomeExcel);
 router.delete("/:id", protect, deleteIncome);
 
-module.export = router;
+module.exports = router;
