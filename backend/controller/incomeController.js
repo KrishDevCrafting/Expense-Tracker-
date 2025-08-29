@@ -7,10 +7,10 @@ exports.addIncome = async (req, res) => {
 
 const   userId = req.user._id;
 try{
-    const {icon,source,amount}= req.body;
+    const {icon, source, amount, date} = req.body;
     // Validation: check for missing fields
-    if(!source ||!amount ||!data){
-        return res.status(400).json({  message:"All fields are required"});
+    if (!source || !amount || !date) {
+        return res.status(400).json({ message: "All fields are required" });
     }
 
     const newIncome = new Income({
@@ -18,7 +18,7 @@ try{
         icon,
         source,     
         amount,
-        date: new Date(data)
+        date: new Date(date)
     })
 
     await newIncome.save();
