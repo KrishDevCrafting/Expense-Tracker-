@@ -3,38 +3,46 @@ const User = require("../models/User");
 const Income = require("../models/income");
 
 exports.addIncome = async (req, res) => {
-
-
-const   userId = req.user._id;
-try{
-    const {icon, source, amount, date} = req.body;
+  const userId = req.user._id;
+  try {
+    const { icon, source, amount, date } = req.body;
     // Validation: check for missing fields
     if (!source || !amount || !date) {
-        return res.status(400).json({ message: "All fields are required" });
+      return res.status(400).json({ message: "All fields are required" });
     }
 
     const newIncome = new Income({
-        userId,
-        icon,
-        source,     
-        amount,
-        date: new Date(date)
-    })
+      userId,
+      icon,
+      source,
+      amount,
+      date: new Date(date),
+    });
 
     await newIncome.save();
-    res.status(200).json(newIncome)  
-}catch(err){
-    res.status(500).json({message:"server error"})
-}
-
-
-
-
-
-
+    res.status(200).json(newIncome);
+  } catch (err) {
+    res.status(500).json({ message: "server error" });
+  }
 };
 // getAllIncome
-exports.getAllIncome = async (req, res) => {};
+exports.getAllIncome = async (req, res) => {
+  const userId = req.user.id;
+
+  try {
+    const income = await Income.find({
+      userId,
+    }).sort({
+      date: -1,
+    });
+
+    res.json(income);
+  } catch (error) {
+    res.status(500).json({
+      message: "server Error",
+    });
+  }
+};
 // deleteIncome
 exports.deleteIncome = async (req, res) => {};
 // downloadIncomeExcel
