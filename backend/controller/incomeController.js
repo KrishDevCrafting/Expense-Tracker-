@@ -74,7 +74,7 @@ exports.downloadIncomeExcel = async (req, res) => {
     }));
 
     const wb = xlsx.utils.book_new();
-    const ws = xlsx.utils.json_to_sheet(date);
+    const ws = xlsx.utils.json_to_sheet(data);
     xlsx.utils.book_append_sheet(wb, ws, "Income");
     xlsx.writeFile(wb, "income_detalis.xlsx");
     res.download("income_details.xlsx");
