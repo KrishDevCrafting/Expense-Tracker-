@@ -60,13 +60,9 @@ exports.deleteIncome = async (req, res) => {
 };
 // downloadIncomeExcel
 exports.downloadIncomeExcel = async (req, res) => {
-  const userId = res.req.id;
+  const userId = req.user.id;
   try {
-    const income = await Income.find({
-      userId,
-    }).sort({
-      date: -1,
-    });
+    const income = await Income.find({ userId }).sort({ date: -1 });
     const data = income.map((item) => ({
       Source: item.source,
       Amount: item.amount,
@@ -76,8 +72,9 @@ exports.downloadIncomeExcel = async (req, res) => {
     const wb = xlsx.utils.book_new();
     const ws = xlsx.utils.json_to_sheet(data);
     xlsx.utils.book_append_sheet(wb, ws, "Income");
-    xlsx.writeFile(wb, "income_detalis.xlsx");
-    res.download("income_details.xlsx");
+    const filePath = __dirname + "/../income_details.xlsx";
+    xlsx.writeFile(wb, filePath);
+    res.download(filePath);
   } catch (error) {
     res.status(500).json({
       message: "server Error!",
