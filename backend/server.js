@@ -6,6 +6,7 @@ const path = require("path");
 const authRoutes = require("./routes/authRoutes");
 const app = express();
 const incomeRoutes = require("./routes/incomeRoutes");
+const expenseRoutes = require("./routes/expenseRoutes");
 // Middleware
 
 app.use(
@@ -20,6 +21,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/income", incomeRoutes);
+app.use("api/expense", expenseRoutes);
 connectDB();
 
 app.get("/", (req, res) => {
