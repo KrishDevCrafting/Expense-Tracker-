@@ -1,4 +1,4 @@
-// Add Income Source User
+// Add expense Source User
 const User = require("../models/User");
 const Expense = require("../models/Expense");
 const xlsx = require("xlsx");
@@ -28,20 +28,12 @@ exports.addExpense = async (req, res) => {
 };
 // getAllExpense
 exports.getAllExpense = async (req, res) => {
-  const userId = req.user.id;
-
+  const userId = req.user._id;
   try {
-    const Expense = await Income.find({
-      userId,
-    }).sort({
-      date: -1,
-    });
-
-    res.json(Expense);
+    const expenses = await Expense.find({ userId }).sort({ date: -1 });
+    res.json(expenses);
   } catch (error) {
-    res.status(500).json({
-      message: "server Error",
-    });
+    res.status(500).json({ message: "server Error" });
   }
 };
 // deleteExpense
@@ -59,26 +51,24 @@ exports.deleteExpense = async (req, res) => {
     });
   }
 };
-// downloadIncomeExcel
-exports.downloadIncomeExcel = async (req, res) => {
-  const userId = req.user.id;
+// downloadExpenseExcel
+exports.downloadExpenseExcel = async (req, res) => {
+  const userId = req.user._id;
   try {
-    const income = await Income.find({ userId }).sort({ date: -1 });
-    const data = income.map((item) => ({
-      Source: item.source,
+    const expense = await Expense.find({ userId }).sort({ date: -1 });
+    const data = expense.map((item) => ({
+      Category: item.category,
       Amount: item.amount,
       Date: item.date,
     }));
 
     const wb = xlsx.utils.book_new();
     const ws = xlsx.utils.json_to_sheet(data);
-    xlsx.utils.book_append_sheet(wb, ws, "Income");
-    const filePath = __dirname + "/../income_details.xlsx";
+    xlsx.utils.book_append_sheet(wb, ws, "expense");
+    const filePath = __dirname + "/../expense_details.xlsx";
     xlsx.writeFile(wb, filePath);
     res.download(filePath);
   } catch (error) {
-    res.status(500).json({
-      message: "server Error!",
-    });
+    res.status(500).json({ message: "server Error!" });
   }
 };
