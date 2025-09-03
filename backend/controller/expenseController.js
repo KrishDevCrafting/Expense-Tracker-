@@ -26,32 +26,32 @@ exports.addExpense = async (req, res) => {
     res.status(500).json({ message: "server error" });
   }
 };
-// getAllIncome
-exports.getAllIncome = async (req, res) => {
+// getAllExpense
+exports.getAllExpense = async (req, res) => {
   const userId = req.user.id;
 
   try {
-    const income = await Income.find({
+    const Expense = await Income.find({
       userId,
     }).sort({
       date: -1,
     });
 
-    res.json(income);
+    res.json(Expense);
   } catch (error) {
     res.status(500).json({
       message: "server Error",
     });
   }
 };
-// deleteIncome
-exports.deleteIncome = async (req, res) => {
+// deleteExpense
+exports.deleteExpense = async (req, res) => {
   // const userId = req.user.id;
 
   try {
-    await Income.findByIdAndDelete(req.params.id);
+    await Expense.findByIdAndDelete(req.params.id);
     res.json({
-      message: "Income delete succesful",
+      message: "Expense delete succesful",
     });
   } catch (error) {
     res.status(500).json({
