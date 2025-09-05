@@ -57,7 +57,7 @@ exports.downloadExpenseExcel = async (req, res) => {
   try {
     const expense = await Expense.find({ userId }).sort({ date: -1 });
     const data = expense.map((item) => ({
-      Category: item.category,
+      category: item.category,
       Amount: item.amount,
       Date: item.date,
     }));
