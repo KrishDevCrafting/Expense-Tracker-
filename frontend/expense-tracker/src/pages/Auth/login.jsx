@@ -5,6 +5,9 @@ import Input from "../../components/layout/Inputs/Inputs";
 import { LuTarget } from "react-icons/lu";
 import axiosInstance from "../../utils/axios";
 import { API_PATHS } from "../../utils/apiPaths";
+
+const validEmail = (email) => /\S+@\S+\.\S+/.test(email);
+
 const Login = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
