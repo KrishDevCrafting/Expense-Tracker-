@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthLayout from "../../components/layout/AuthLayout";
 import Input from "../../components/layout/Inputs/Inputs"; // Add this import
@@ -6,7 +6,7 @@ import { ProfilePhotoSelector } from "../../components/layout/Inputs/ProfilePhot
 import axiosInstance from "../../utils/axios";
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/Context";
-import upload from "../../../../../backend/middleware/uploadMiddleware";
+
 export default function SignUp() {
   const [profilePic, setProfilePic] = useState(null);
   const [fullName, setFullName] = useState(""); // Fix casing
@@ -15,7 +15,7 @@ export default function SignUp() {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-  const { updateUser } = UserContext(UserContext);
+  const { updateUser } = useContext(UserContext);
   // Email validation helper
   function validateEmail(email) {
     // Simple regex for email validation
@@ -40,19 +40,19 @@ export default function SignUp() {
     }
     setError("");
 
-    // SIGN UP API
-
+    let profileImageUrl = "";
     try {
-      // upload Image if present
       if (profilePic) {
+        // You must define/uploadImage or use your backend API for image upload
         const imgUploadRes = await uploadImage(profilePic);
         profileImageUrl = imgUploadRes.imgUrl || "";
       }
 
-      const response = await axiosInstance.post(API_PATHS.AUTH.response, {
+      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
         fullName,
         email,
         password,
+        profileImageUrl,
       });
 
       const { token, user } = response.data;
@@ -66,7 +66,7 @@ export default function SignUp() {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message);
       } else {
-        setError("Something went wrong. Please try again");
+        setError("Something went wrong. Please try again............");
       }
     }
   };
