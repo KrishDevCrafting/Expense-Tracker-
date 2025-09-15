@@ -3,6 +3,10 @@ import { useNavigate, Link } from "react-router-dom";
 import AuthLayout from "../../components/layout/AuthLayout";
 import Input from "../../components/layout/Inputs/Inputs"; // Add this import
 import { ProfilePhotoSelector } from "../../components/layout/Inputs/ProfilePhotoSelector";
+import axiosInstance from "../../utils/axios";
+import { API_PATHS } from "../../utils/apiPaths";
+import { UserContext } from "../../context/Context";
+import upload from "../../../../../backend/middleware/uploadMiddleware";
 export default function SignUp() {
   const [profilePic, setProfilePic] = useState(null);
   const [fullName, setFullName] = useState(""); // Fix casing
@@ -11,26 +15,60 @@ export default function SignUp() {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
+  const { updateUser } = UserContext(UserContext);
+  // Email validation helper
+  function validateEmail(email) {
+    // Simple regex for email validation
+    return /\S+@\S+\.\S+/.test(email);
+  }
 
-  //handle sign up From Submit!!
+  //handle sign up Form Submit!!
   const handleSign = async (e) => {
-    let profileImageURL = "";
+    e.preventDefault();
 
     if (!fullName) {
       setError("Please enter your name");
       return;
     }
-
-    if (!ValidateEmail(email)) {
+    if (!validateEmail(email)) {
       setError("Please enter a valid email address.");
       return;
     }
     if (!password) {
-      setError("please enter the password");
+      setError("Please enter the password");
       return;
     }
     setError("");
-    // Signup API call
+
+    // SIGN UP API
+
+    try {
+      // upload Image if present
+      if (profilePic) {
+        const imgUploadRes = await uploadImage(profilePic);
+        profileImageUrl = imgUploadRes.imgUrl || "";
+      }
+
+      const response = await axiosInstance.post(API_PATHS.AUTH.response, {
+        fullName,
+        email,
+        password,
+      });
+
+      const { token, user } = response.data;
+
+      if (token) {
+        localStorage.setItem("token", token);
+        updateUser(user);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("Something went wrong. Please try again");
+      }
+    }
   };
 
   return (
