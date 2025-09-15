@@ -1,4 +1,4 @@
-export const BASE_URL = "https://localhost:8000";
+export const BASE_URL = "http://localhost:8000";
 
 
 // utils/apiPath.js
@@ -18,18 +18,19 @@ export const API_PATHS = {
         DELETE_INCOME: (incomeId) => `/api/income/${
             incomeId
         }`,
-        EXPENSE:{
-            ADD_EXPENSE:"/api/expense/add",
-            GET_ALL_EXPENSE: "/api/expense/get",
-            DELETE_EXPENSE: (expenseId)=> `/api/expense/${
-                expenseId
-            }`,
-            DOWNLOAD_EXPENSE: `/api/expense/dowloadexcel`,
-        },
-        IMAGE:{
-            UPLOAD_IMAGE: "/api/auth/upload-image",
+        DOWNLOAD_INCOME: "/api/income/downloadexcel",
+    },
+    EXPENSE:{
+        ADD_EXPENSE:"/api/expense/add",
+        GET_ALL_EXPENSE: "/api/expense/get",
+        DELETE_EXPENSE: (expenseId) => `/api/expense/${
+            expenseId
+        }`,
+        DOWNLOAD_EXPENSE: "/api/expense/downloadexcel",
+    },
+    IMAGE:{
+        UPLOAD_IMAGE: "/api/auth/upload-image",
 
-        },
-        
-    }
+    },
+    
 }
