@@ -38,21 +38,24 @@ export default function SignUp() {
       setError("Please enter the password");
       return;
     }
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters.");
+      return;
+    }
     setError("");
 
     let profileImageUrl = "";
     try {
       if (profilePic) {
-        // You must define/uploadImage or use your backend API for image upload
         const imgUploadRes = await uploadImage(profilePic);
-        profileImageUrl = imgUploadRes.imgUrl || "";
+        profileImageUrl = imgUploadRes.imageUrl || "";
       }
 
       const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
         fullName,
         email,
         password,
-        profileImageUrl,
+        profileImage: profileImageUrl,
       });
 
       const { token, user } = response.data;

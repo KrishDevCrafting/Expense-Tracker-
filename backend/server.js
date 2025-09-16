@@ -26,6 +26,9 @@ app.use("/api/expense", expenseRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 connectDB();
 
+const path = require("path");
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 app.get("/", (req, res) => {
   const PORT = process.env.PORT || 7000;
   res.send(`<h1>

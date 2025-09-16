@@ -11,17 +11,15 @@ const uploadImage = async (imageFile) => {
       API_PATHS.IMAGE.UPLOAD_IMAGE,
       formData,
       {
-        header: {
+        headers: {
           "Content-Type": "multipart/form-data",
         },
       }
     );
     return response.data;
-    // return Response data
   } catch (error) {
     console.error("error uploading the image", error);
     throw error;
-    // Rethrow error for headling
   }
 };
 
