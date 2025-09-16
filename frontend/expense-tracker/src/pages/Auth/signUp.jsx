@@ -6,7 +6,7 @@ import { ProfilePhotoSelector } from "../../components/layout/Inputs/ProfilePhot
 import axiosInstance from "../../utils/axios";
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/Context";
-
+import uploadImage from "../../utils/uploadImage";
 export default function SignUp() {
   const [profilePic, setProfilePic] = useState(null);
   const [fullName, setFullName] = useState(""); // Fix casing

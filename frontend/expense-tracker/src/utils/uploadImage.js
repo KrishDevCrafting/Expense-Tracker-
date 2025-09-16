@@ -1,4 +1,3 @@
-import axios from "axios";
 import { API_PATHS } from "./apiPaths";
 import axiosInstance from "./axios";
 
