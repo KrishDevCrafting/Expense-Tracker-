@@ -2,6 +2,13 @@ import React from 'react'
 
 export default function Home() {
   return (
-    <div>Home</div>
+ <DashboardLayout>
+
+
+ <div>
+
+  
+  </div> 
+ </DashboardLayout>
   )
 }
