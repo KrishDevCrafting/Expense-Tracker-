@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/Context";
+import { SideMenu } from "./SideMenu";
+import { Navbar } from "./Navbar";
 
-export const DashboardLayout = ({ childer, activeMenu }) => {
+export const DashboardLayout = ({ children, activeMenu }) => {
   const { user } = useContext(UserContext);
 
   return (
@@ -14,7 +16,7 @@ export const DashboardLayout = ({ childer, activeMenu }) => {
             <SideMenu activeMenu={activeMenu} />
           </div>
 
-          <div className="grow mx-5">{childer}</div>
+          <div className="grow mx-5">{children}</div>
         </div>
       )}
     </div>

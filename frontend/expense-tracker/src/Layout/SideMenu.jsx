@@ -1,7 +1,13 @@
-import React from 'react'
+import React from "react";
 
-export const SideMenu = () => {
+const SideMenu = () => {
   return (
-    <div>SideMenu</div>
-  )
-}
+    <>
+      <div>
+        <h1>SideMenu</h1>
+      </div>
+    </>
+  );
+};
+
+export default SideMenu;

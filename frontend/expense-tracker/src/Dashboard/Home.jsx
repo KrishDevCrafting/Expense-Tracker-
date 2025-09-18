@@ -1,10 +1,11 @@
 import React from "react";
 import { DashboardLayout } from "../Layout/DashboardLayout";
-export default function  Home() {
+
+export default function Home() {
   return (
-    <DashboardLayout>
-      <div>
-        <h1>Hello</h1>
+    <DashboardLayout activeMenu="Dashboard">
+      <div className="my-5 mx-auto">
+        <h1 className="text-xl font-bold">Welcome to Dashboard</h1>
       </div>
     </DashboardLayout>
   );
