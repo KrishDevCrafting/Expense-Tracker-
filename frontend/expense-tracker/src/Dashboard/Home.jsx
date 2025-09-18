@@ -1,14 +1,11 @@
-import React from 'react'
-
-export default function Home() {
+import React from "react";
+import { DashboardLayout } from "../Layout/DashboardLayout";
+export default function  Home() {
   return (
- <DashboardLayout>
-
-
- <div>
-
-  
-  </div> 
- </DashboardLayout>
-  )
+    <DashboardLayout>
+      <div>
+        <h1>Hello</h1>
+      </div>
+    </DashboardLayout>
+  );
 }

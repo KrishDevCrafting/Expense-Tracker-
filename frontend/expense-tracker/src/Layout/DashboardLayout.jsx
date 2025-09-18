@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/Context";
 
-export const DashboardLayout = () => {
+export const DashboardLayout = ({ childer, activeMenu }) => {
   const { user } = useContext(UserContext);
 
   return (
