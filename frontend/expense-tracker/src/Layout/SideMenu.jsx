@@ -1,13 +1,8 @@
-import React from "react";
-
-const SideMenu = () => {
+// After (The Fix)
+export function SideMenu() {
   return (
     <>
-      <div>
-        <h1>SideMenu</h1>
-      </div>
+      <div>SideBar!</div>
     </>
   );
-};
-
-export default SideMenu;
+}
