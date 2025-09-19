@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useContext } from "react"; // 1. Import useContext
+import { UserContext } from "../../context/Context"; // 2. Import your UserContext
 import AuthLayout from "../../components/layout/AuthLayout";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/layout/Inputs/Inputs";
-import { LuTarget } from "react-icons/lu";
 import axiosInstance from "../../utils/axios";
 import { API_PATHS } from "../../utils/apiPaths";
 
@@ -13,6 +13,7 @@ const Login = () => {
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
+  const { updateUser } = useContext(UserContext); // 3. Get updateUser from context
 
   //  Handle Login Foprm Submit!!
 
@@ -22,7 +23,7 @@ const Login = () => {
       setError("please enter a valid email address!");
       return;
     }
-    if (!password) {  
+    if (!password) {
       setError("please enter the password!");
       return;
     }
@@ -30,28 +31,30 @@ const Login = () => {
 
     // login APi call
 
-try {
-    const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
-      email,
-      password,
-    });
+    try {
+      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
+        email,
+        password,
+      });
 
-    const { token, user } = response.data;
+      const { token, user } = response.data;
 
-    if (token) {
-      localStorage.setItem("token", token);
-      navigate("/dashboard");
+      if (token) {
+        localStorage.setItem("token", token);
+        updateUser(user); // 4. Call updateUser with the user data from the API!
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("something went wrong, please try again later");
+      }
     }
-  } catch (error) {
-    if (error.response && error.response.data.message) {
-      setError(error.response.data.message);
-    } else {
-      setError("something went wrong, please try again later");
-    }
-  }
-};
+  };
 
   return (
+    // ... your JSX remains exactly the same
     <>
       <AuthLayout>
         <div className="lg:w-[70%] md:h-full flex flex-col justify-center">

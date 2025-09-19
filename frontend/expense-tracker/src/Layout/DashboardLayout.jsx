@@ -1,10 +1,16 @@
+//  src/Layout/DashboardLayout.jsx
+
 import React, { useContext } from "react";
 import { UserContext } from "../context/Context";
-
 import { Navbar } from "./Navbar";
 import { SideMenu } from "./SideMenu";
+
 export const DashboardLayout = ({ children, activeMenu }) => {
+  // We get the user from context HERE
   const { user } = useContext(UserContext);
+
+  // So we need to log it immediately after, right HERE
+  console.log("Current user from Layout:", user);
 
   return (
     <div className="">

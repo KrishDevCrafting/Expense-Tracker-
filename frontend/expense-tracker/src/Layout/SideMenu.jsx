@@ -1,3 +1,4 @@
+import React from "react";
 // After (The Fix)
 export function SideMenu() {
   return (
