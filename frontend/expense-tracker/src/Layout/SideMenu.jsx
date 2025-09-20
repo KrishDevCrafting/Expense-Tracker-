@@ -29,10 +29,18 @@ export function SideMenu({ activeMenu }) {
     "
     >
       <div className="">
-        {user?.profileImageUrl && (
-          <img src={user.profileImageUrl} alt="Profile Image" className="" />
+        {user?.profileImageUrl ? (
+          <img
+            src={user.profileImageUrl || ""}
+            alt="Profile Image"
+            className="w-20 h-20 bg-slate-400 rounded-full"
+          />
+        ) : (
+          <></>
         )}
-        <h5 className="">{user?.fullName || ""}</h5>
+        <h5 className="text-gray-950 font-medium leading-6">
+          {user?.fullName || ""}
+        </h5>
       </div>
       {SIDE_MENU_DATA.map((item, index) => (
         <button
@@ -42,16 +50,12 @@ export function SideMenu({ activeMenu }) {
           } py-3 px-6 rounded-lg mb-3`}
           onClick={() => handleClick(item.path)}
         >
-          <item.icon className="" />
+          <item.icon className="text-xl" />
         </button>
       ))}
     </div>
   );
 }
-
-
-
-
 
 // // {
 //     "fullName": "Krish.K",
