@@ -1,6 +1,6 @@
 import React from "react";
 import { DashboardLayout } from "../Layout/DashboardLayout";
-
+useUserAuth()
 export default function Home() {
   return (
     <DashboardLayout activeMenu="Dashboard">
