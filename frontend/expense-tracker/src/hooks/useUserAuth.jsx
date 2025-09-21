@@ -1,17 +1,18 @@
-import {useContext} from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/Context";
+import { API_PATHS } from "../utils/apiPaths";
+import axiosInstance from "../utils/axios";
 
 export const useUserAuth = () => {
-  const { user, updatedUser, clearUser } = useConetxt(UserContext);
-
+  const { user, updateUser, clearUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user) return;
 
     let isMounted = true;
-    const fetchUseInfo = async () => {
+    const fetchUserInfo = async () => {
       try {
         const response = await axiosInstance.get(API_PATHS.AUTH.GET_USER_INFO);
         if (isMounted && response.data) {
@@ -29,5 +30,5 @@ export const useUserAuth = () => {
     return () => {
       isMounted = false;
     };
-  }, [updateUser, clearUser, navigate]);
+  }, [user, updateUser, clearUser, navigate]);
 };
