@@ -55,7 +55,7 @@ export default function SignUp() {
         fullName,
         email,
         password,
-        profileImage: profileImageUrl,
+        profileImageUrl: profileImageUrl,
       });
 
       const { token, user } = response.data;
