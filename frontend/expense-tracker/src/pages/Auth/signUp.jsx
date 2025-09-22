@@ -48,6 +48,7 @@ export default function SignUp() {
     try {
       if (profilePic) {
         const imgUploadRes = await uploadImage(profilePic);
+        console.log("Image upload response from server:", imgUploadRes);
         profileImageUrl = imgUploadRes.imageUrl || "";
       }
 

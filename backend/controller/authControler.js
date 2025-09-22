@@ -6,7 +6,7 @@ const generateToken = (id) => {
 };
 
 exports.registerUser = async (req, res) => {
-  const { fullName, password, email, profileImage } = req.body;
+  const { fullName, password, email, profileImageUrl } = req.body;
 
   // Validation check for missing fields
   if (!fullName || !email || !password) {
@@ -30,7 +30,7 @@ exports.registerUser = async (req, res) => {
       fullName,
       email,
       password,
-      profileImage, // <-- match your schema
+      profileImageUrl, // <-- match your schema
     });
 
     res.status(201).json({
@@ -65,7 +65,7 @@ exports.loginUser = async (req, res) => {
       token: generateToken(user._id),
     });
   } catch (err) {
-     res.status(500).json({
+    res.status(500).json({
       message: "Error registering user",
       error: err.message,
     });
@@ -73,17 +73,16 @@ exports.loginUser = async (req, res) => {
 };
 
 exports.getUserInfo = async (req, res) => {
-
-  try{
+  try {
     const user = await User.findById(req.user.id).select("-password");
-    if(!user){ 
+    if (!user) {
       return res.status(400).json({
-        message: "User not found"
-      })
+        message: "User not found",
+      });
     }
 
     res.status(200).json(user);
-  }catch(err){
+  } catch (err) {
     res.status(500).json({
       message: "Error fetching user!",
       error: err.message,
