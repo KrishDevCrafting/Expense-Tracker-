@@ -29,7 +29,7 @@ export function SideMenu({ activeMenu }) {
     "
     >
       <div className="flex flex-col items-center justify-center gap-3 mt-7">
-        {!user?.profileImageUrl ? (
+        {user?.profileImageUrl ? (
           <img
             src={user?.profileImageUrl || ""}
             alt="Profile Image"
