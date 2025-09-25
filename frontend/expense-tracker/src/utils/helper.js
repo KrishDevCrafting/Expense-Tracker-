@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
@@ -11,4 +13,14 @@ export const getInitials = (name) => {
     initials += words[i][0];
   }
   return initials.toUpperCase();
+};
+
+export const addThousandSeparator = (num) => {
+  if (num === null || isNaN(num)) return ""
+  
+  ;
+const [integerPart,fractionalPart]= num.toString().split("."
+);
+const formattedImage = integerPart.replace(/\B(?=(\d{3})+(?!\d))) 
+
 };
