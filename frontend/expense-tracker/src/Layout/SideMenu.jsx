@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { SIDE_MENU_DATA } from "../utils/data";
 import { UserContext } from "../context/Context";
 import { useNavigate } from "react-router-dom";
-import { CharAvatar } from "../components/layout/Card/CharAvatar";
+import { CharAvatar } from "../components/Card/CharAvatar";
 export function SideMenu({ activeMenu }) {
   const { user, clearUser } = useContext(UserContext);
   const navigate = useNavigate();

@@ -1,10 +1,20 @@
 import { useState } from "react";
 
+/**
+ * Validates if the given string is a valid email address.
+ * @param {string} email - The email string to validate.
+ * @returns {boolean} - True if the email is valid, false otherwise.
+ */
 export const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
 };
 
+/**
+ * Gets the first letter of the first two words in a name.
+ * @param {string} name - The full name string.
+ * @returns {string} - The initials (e.g., "JD" for "John Doe").
+ */
 export const getInitials = (name) => {
   if (!name) return "";
   const words = name.split(" ");
@@ -15,16 +25,23 @@ export const getInitials = (name) => {
   return initials.toUpperCase();
 };
 
+/**
+ * Formats a number by adding thousand separators (commas).
+ * @param {number} num - The number to format.
+ * @returns {string} - The formatted number as a string.
+ */
 export const addThousandSeparator = (num) => {
-  if (num === null || isNaN(num)) return ""
-  
-  ;
-const [integerPart,fractionalPart]= num.toString().split("."
-);
-const formattedImage = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
+  // Return an empty string if the input is not a valid number.
+  if (num === null || num === undefined || isNaN(num)) return "";
 
-return fractionalPart
-? `${formattedImage}.${fractionalPart}`
-: formateInteger
+  // Split the number into its integer and fractional parts.
+  const [integerPart, fractionalPart] = num.toString().split(".");
 
+  // Use a regular expression to insert commas into the integer part.
+  const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  // Re-join the integer and fractional parts if a fractional part exists.
+  return fractionalPart
+    ? `${formattedInteger}.${fractionalPart}`
+    : formattedInteger;
 };

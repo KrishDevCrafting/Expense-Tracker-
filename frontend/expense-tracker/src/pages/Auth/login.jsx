@@ -1,8 +1,8 @@
 import React, { useContext } from "react"; // 1. Import useContext
 import { UserContext } from "../../context/Context"; // 2. Import your UserContext
-import AuthLayout from "../../components/layout/AuthLayout";
+import AuthLayout from "../../components/AuthLayout";
 import { Link, useNavigate } from "react-router-dom";
-import Input from "../../components/layout/Inputs/Inputs";
+import Input from "../../components/Inputs/Inputs";
 import axiosInstance from "../../utils/axios";
 import { API_PATHS } from "../../utils/apiPaths";
 

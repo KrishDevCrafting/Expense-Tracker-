@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import AuthLayout from "../../components/layout/AuthLayout";
-import Input from "../../components/layout/Inputs/Inputs"; // Add this import
-import { ProfilePhotoSelector } from "../../components/layout/Inputs/ProfilePhotoSelector";
+import AuthLayout from "../../components/AuthLayout";
+import Input from "../../components/Inputs/Inputs"; // Add this import
+import { ProfilePhotoSelector } from "../../components/Inputs/ProfilePhotoSelector";
 import axiosInstance from "../../utils/axios";
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/Context";
