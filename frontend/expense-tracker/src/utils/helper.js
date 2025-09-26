@@ -21,6 +21,10 @@ export const addThousandSeparator = (num) => {
   ;
 const [integerPart,fractionalPart]= num.toString().split("."
 );
-const formattedImage = integerPart.replace(/\B(?=(\d{3})+(?!\d))) 
+const formattedImage = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
+
+return fractionalPart
+? `${formattedImage}.${fractionalPart}`
+: formateInteger
 
 };

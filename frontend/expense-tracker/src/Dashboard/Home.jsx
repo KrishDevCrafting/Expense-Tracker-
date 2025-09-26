@@ -4,9 +4,9 @@ import { useUserAuth } from "../hooks/useUserAuth";
 import axiosInstance from "../utils/axios";
 import { API_PATHS } from "../utils/apiPaths";
 import { InfoCard } from "../components/layout/Card/InfoCard";
-import {LuHandCoins,LuwalletMinialmal} from "react-icons/lu"
-import {IoMdCard} from "react-icons/io"
-
+import { LuHandCoins, LuwalletMinialmal } from "react-icons/lu";
+import { IoMdCard } from "react-icons/io";
+import { addThousandSeparator } from "../utils/helper";
 export default function Home() {
   useUserAuth();
 
