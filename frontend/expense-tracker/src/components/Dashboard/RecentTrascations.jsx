@@ -19,4 +19,3 @@ export const RecentTransactions = ({ transaction, onSeeMore }) => {
   );
 };
 
-// hello
