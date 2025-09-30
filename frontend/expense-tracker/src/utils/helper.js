@@ -45,3 +45,4 @@ export const addThousandSeparator = (num) => {
     ? `${formattedInteger}.${fractionalPart}`
     : formattedInteger;
 };
+// turtur
