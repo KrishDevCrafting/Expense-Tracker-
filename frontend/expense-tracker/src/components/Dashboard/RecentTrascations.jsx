@@ -1,11 +1,10 @@
-import React from "react";
+import react from "react";
 import { LuArrowRight } from "react-icons/lu";
 import moment from "moment";
 import "../../../src/index.css";
-import { TrasactionInfoCard } from "../Card/TrasactionInfoCard";
-// Make sure this import is correct
+import { TransactionInfoCard } from "../Card/TrasactionInfoCard";
 
-export const RecentTransactions = ({ transaction = [], onSeeMore }) => {
+export const RecentTransactions = ({ transaction, onSeeMore }) => {
   return (
     <div className="bg-white p-6 rounded-2xl shadow-gray-100 border-gray-200/50">
       <div className="flex items-center justify-between">
@@ -18,12 +17,12 @@ export const RecentTransactions = ({ transaction = [], onSeeMore }) => {
         </button>
       </div>
       <div className="mt-6">
-        {transaction?.slice(0, 5).map((item) => (
-          <TrasactionInfoCard
+        {transaction?.slice(0, 5)?.map((item) => (
+          <TransactionInfoCard
             key={item._id}
-            title={item.type === "expense" ? item.category : item.source}
+            title={item.type == "expense" ? item.category : item.source}
             icon={item.icon}
-            data={moment(item.date).format("Do MM YYYY")}
+            data={moment(item.date).format("DD MMM YYYY")}
             amount={item.amount}
             type={item.type}
             hideDeleteBtn
