@@ -1,10 +1,10 @@
-import react from "react";
+import React from "react";
 import { LuArrowRight } from "react-icons/lu";
 import moment from "moment";
 import "../../../src/index.css";
-import { TransactionInfoCard } from "../Card/TrasactionInfoCard";
+import { TransactionInfoCard } from "../Card/TransactionInfoCard";
 
-export const RecentTransactions = ({ transaction, onSeeMore }) => {
+export const RecentTransactions = ({ transaction = [], onSeeMore }) => {
   return (
     <div className="bg-white p-6 rounded-2xl shadow-gray-100 border-gray-200/50">
       <div className="flex items-center justify-between">
@@ -17,17 +17,21 @@ export const RecentTransactions = ({ transaction, onSeeMore }) => {
         </button>
       </div>
       <div className="mt-6">
-        {transaction?.slice(0, 5)?.map((item) => (
-          <TransactionInfoCard
-            key={item._id}
-            title={item.type == "expense" ? item.category : item.source}
-            icon={item.icon}
-            data={moment(item.date).format("DD MMM YYYY")}
-            amount={item.amount}
-            type={item.type}
-            hideDeleteBtn
-          />
-        ))}
+        {transaction.length === 0 ? (
+          <p className="text-gray-400 text-sm">No recent transactions.</p>
+        ) : (
+          transaction.slice(0, 5).map((item) => (
+            <TransactionInfoCard
+              key={item._id}
+              title={item.type === "expense" ? item.category : item.source}
+              icon={item.icon}
+              data={moment(item.date).format("DD MMM YYYY")}
+              amount={item.amount}
+              type={item.type}
+              hideDeleteBtn
+            />
+          ))
+        )}
       </div>
     </div>
   );
