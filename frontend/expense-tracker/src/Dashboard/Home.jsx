@@ -9,6 +9,7 @@ import { LuHandCoins, LuWalletMinimal } from "react-icons/lu";
 import { IoMdCard } from "react-icons/io";
 import { addThousandSeparator } from "../utils/helper";
 import { RecentTransactions } from "../components/Dashboard/RecentTrascations";
+import { FinanceOverview } from "../components/Dashboard/FinanceOverview";
 
 export default function Home() {
   useUserAuth();
@@ -73,6 +74,7 @@ export default function Home() {
                 transactions={dashboardData?.recentTransactions}
                 onSeeMore={() => navigate("/expense")}
               />
+              <FinanceOverview />
             </div>
           </>
         )}
