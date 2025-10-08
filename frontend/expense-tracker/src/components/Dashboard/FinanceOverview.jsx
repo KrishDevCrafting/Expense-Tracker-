@@ -10,7 +10,7 @@ export const FinanceOverview = ({
   const balanceData = [
     { name: "Total Balance", amount: totalBalance },
     { name: "Total Expense", amount: totalExpense },
-    { name: "Total Income,amount: totalIncome" },
+    { name: "Total Income", amount: totalIncome },
   ];
 
   return (
@@ -18,7 +18,6 @@ export const FinanceOverview = ({
       <div className="card">
         <div className="flex items-center justify-between">
           <h5 className="text-lg">FinanceOverview</h5>
-          
         </div>
 
         <CustomPiechart
