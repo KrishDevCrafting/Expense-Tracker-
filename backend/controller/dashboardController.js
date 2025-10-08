@@ -12,7 +12,7 @@ exports.getDashboardData = async (req, res) => {
       { $match: { userId: userObjectId } },
       { $group: { _id: null, total: { $sum: "$amount" } } },
     ]);
-
+    console.log("totalIncome", { totalIncome, userId: isValidObjectId });
     // Total Expense
     const totalExpense = await Expense.aggregate([
       { $match: { userId: userObjectId } },
@@ -20,34 +20,36 @@ exports.getDashboardData = async (req, res) => {
     ]);
 
     // Last 60 days income transactions
-    const sixtyDaysAgo = new Date(Date.now() - 60 * 24 * 60 * 60 * 1000);
     const last60daysIncomeTransaction = await Income.find({
       userId,
-      date: { $gte: sixtyDaysAgo },
+      date: {
+        $gte: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000),
+      },
     }).sort({ date: -1 });
 
     // Total income for last 60 days
-    const incomeLast60Days = last60daysIncomeTransaction.reduce(
+    const last60daysIncome = last60daysIncomeTransaction.reduce(
       (sum, transaction) => sum + transaction.amount,
       0
     );
 
     // Last 30 days expense and income transactions
-    const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
     const last30daysExpenseTransaction = await Expense.find({
       userId,
-      date: { $gte: thirtyDaysAgo },
+      date: {
+        $gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
+      },
     }).sort({ date: -1 });
-
+    // Get total expense for last 30 days!
     const expenseLast30days = last30daysExpenseTransaction.reduce(
       (sum, txn) => sum + txn.amount,
       0
     );
 
-    const last30daysIncomeTransaction = await Income.find({
-      userId,
-      date: { $gte: thirtyDaysAgo },
-    }).sort({ date: -1 });
+    // const last30daysIncomeTransaction = await Income.find({
+    //   userId,
+    //   date: { $gte: thirtyDaysAgo },
+    // }).sort({ date: -1 });
 
     // Last 5 transactions (income + expense)
     const lastTransactions = [
@@ -75,12 +77,9 @@ exports.getDashboardData = async (req, res) => {
         total: expenseLast30days,
         transaction: last30daysExpenseTransaction,
       },
-      last30daysIncome: {
-        total: last30daysIncomeTransaction.reduce(
-          (sum, txn) => sum + txn.amount,
-          0
-        ),
-        transaction: last30daysIncomeTransaction,
+      last60daysIncome: {
+        total: last60daysIncome,
+        transaction: last60daysIncomeTransaction,
       },
       recentTransactions: lastTransactions,
     });
@@ -91,6 +90,3 @@ exports.getDashboardData = async (req, res) => {
     });
   }
 };
-
-
-
