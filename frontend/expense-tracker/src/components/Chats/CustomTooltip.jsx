@@ -11,9 +11,9 @@ export const CustomTooltip = ({ active, payload }) => {
         >
           {payload[0].name}
         </p>
-        <p className="">
+        <p className="text-sm text-gray-600">
           Amount:
-          <span className="">${payload[0].value}</span>
+          <span className="text-sm font-medium text-gray-900">${payload[0].value}</span>
         </p>
       </div>
     );
