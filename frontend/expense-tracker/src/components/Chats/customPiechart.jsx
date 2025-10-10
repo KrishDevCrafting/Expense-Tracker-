@@ -7,6 +7,8 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
+import { CustomTooltip } from "./CustomTooltip";
+import { CustomLegend } from "./CustomLegend";
 
 export const CustomPiechart = ({
   data,
@@ -35,8 +37,8 @@ export const CustomPiechart = ({
               />
             ))}
           </Pie>
-          <Tooltip />
-          <Legend />
+          <Tooltip content={CustomTooltip} />
+          <Legend content={CustomLegend} />
           {showTextAnchor && (
             <>
               <text
