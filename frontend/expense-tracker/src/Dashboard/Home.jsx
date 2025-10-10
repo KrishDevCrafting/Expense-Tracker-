@@ -10,6 +10,7 @@ import { IoMdCard } from "react-icons/io";
 import { addThousandSeparator } from "../utils/helper";
 import { RecentTransactions } from "../components/Dashboard/RecentTrascations";
 import { FinanceOverview } from "../components/Dashboard/FinanceOverview";
+import { ExpenseTransaction } from "../components/Dashboard/ExpenseTransaction";
 
 export default function Home() {
   useUserAuth();
@@ -69,12 +70,22 @@ export default function Home() {
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-              {/* 3. Corrected Component and props */}
+              {/* 3. Corrected Component and props
               <RecentTransactions
-                transactions={dashboardData?.recentTransactions}
+                transaction={dashboardData?.recentTransactions || []}
                 onSeeMore={() => navigate("/expense")}
               />
-              <FinanceOverview />
+              <FinanceOverview
+                totalBalance={dashboardData?.totalBalance || 0}
+                totalIncome={dashboardData?.totalIncome || 0}
+                totalExpense={dashboardData?.totalExpense || 0}
+              /> */}
+              <ExpenseTransaction
+                transactions={
+                  dashboardData?.last30daysExpense?.transaction || []
+                }
+                onSeeMore={() => navigate("/expense")}
+              />
             </div>
           </>
         )}
