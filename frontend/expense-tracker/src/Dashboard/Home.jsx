@@ -11,7 +11,7 @@ import { addThousandSeparator } from "../utils/helper";
 import { RecentTransactions } from "../components/Dashboard/RecentTrascations";
 import { FinanceOverview } from "../components/Dashboard/FinanceOverview";
 import { ExpenseTransaction } from "../components/Dashboard/ExpenseTransaction";
-
+import { Last30DaysExpense } from "../components/Dashboard/Last30DaysExpense";
 export default function Home() {
   useUserAuth();
   const navigate = useNavigate(); // 2. Initialize navigate
@@ -85,6 +85,10 @@ export default function Home() {
                   dashboardData?.last30daysExpense?.transaction || []
                 }
                 onSeeMore={() => navigate("/expense")}
+              />
+
+              <Last30DaysExpense
+                data={dashboardData?.last30daysExpense?.transaction || []}
               />
             </div>
           </>

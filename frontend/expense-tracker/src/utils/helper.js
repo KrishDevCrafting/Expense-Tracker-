@@ -45,4 +45,4 @@ export const addThousandSeparator = (num) => {
     ? `${formattedInteger}.${fractionalPart}`
     : formattedInteger;
 };
-// lanahub@gmail.com
+
