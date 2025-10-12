@@ -90,6 +90,14 @@ export default function Home() {
               <Last30DaysExpense
                 data={dashboardData?.last30daysExpense?.transaction || []}
               />
+
+              <RecentIncomeWithChart
+                data={
+                  dashboardData?.last30daysIncome?.transaction?.slice(0, 4) ||
+                  []
+                }
+                totalIncome={dashboardData?.totalIncome || 0}
+              />
             </div>
           </>
         )}
