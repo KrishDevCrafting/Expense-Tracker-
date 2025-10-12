@@ -12,6 +12,8 @@ import { RecentTransactions } from "../components/Dashboard/RecentTrascations";
 import { FinanceOverview } from "../components/Dashboard/FinanceOverview";
 import { ExpenseTransaction } from "../components/Dashboard/ExpenseTransaction";
 import { Last30DaysExpense } from "../components/Dashboard/Last30DaysExpense";
+import RecentIncomeWithChart from "../components/Dashboard/RecentIncomeWithChart";
+import RecentIncome from "../components/Dashboard/RecentIncome";
 export default function Home() {
   useUserAuth();
   const navigate = useNavigate(); // 2. Initialize navigate
@@ -70,16 +72,15 @@ export default function Home() {
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-              {/* 3. Corrected Component and props
               <RecentTransactions
-                transaction={dashboardData?.recentTransactions || []}
+                transactions={dashboardData?.recentTransactions || []}
                 onSeeMore={() => navigate("/expense")}
               />
               <FinanceOverview
                 totalBalance={dashboardData?.totalBalance || 0}
                 totalIncome={dashboardData?.totalIncome || 0}
                 totalExpense={dashboardData?.totalExpense || 0}
-              /> */}
+              />
               <ExpenseTransaction
                 transactions={
                   dashboardData?.last30daysExpense?.transaction || []
@@ -97,6 +98,13 @@ export default function Home() {
                   []
                 }
                 totalIncome={dashboardData?.totalIncome || 0}
+              />
+
+              <RecentIncome
+                transactions={
+                  dashboardData?.last60daysIncome?.transaction || []
+                }
+                onSeeMore={() => navigate("/income")}
               />
             </div>
           </>
