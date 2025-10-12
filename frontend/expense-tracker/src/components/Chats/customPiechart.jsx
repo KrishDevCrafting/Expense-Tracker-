@@ -37,8 +37,8 @@ export const CustomPiechart = ({
               />
             ))}
           </Pie>
-          <Tooltip content={CustomTooltip} />
-          <Legend content={CustomLegend} />
+          <Tooltip content={<CustomTooltip />} />
+          <Legend content={<CustomLegend />} />
           {showTextAnchor && (
             <>
               <text
