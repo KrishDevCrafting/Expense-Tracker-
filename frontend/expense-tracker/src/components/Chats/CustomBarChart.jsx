@@ -10,9 +10,9 @@ import {
   Cell,
   Tooltip,
 } from "recharts";
+
 const CustomBarChart = ({ data }) => {
   // Function to alternate colors
-
   const getBarColor = (index) => {
     return index % 2 === 0 ? "#875cf5" : "#cfbefb";
   };
@@ -24,16 +24,16 @@ const CustomBarChart = ({ data }) => {
           <p className="text-xs font-semibold text-purple-800 mb-1">
             {payload[0].payload.category}
           </p>
-
           <p className="text-sm text-gray-600">
             Amount:
             <span className="text-sm font-medium text-gray-900">
-              ${payload[0].payload.amount}
+              ₹{payload[0].payload.amount}
             </span>
           </p>
         </div>
       );
     }
+    return null;
   };
 
   return (
@@ -41,20 +41,10 @@ const CustomBarChart = ({ data }) => {
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data}>
           <CartesianGrid stroke="none" />
-          <XAxis dataKey="month" trick={{ fontSize: 12, fill: "#555" }} />
+          <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#555" }} />
           <YAxis tick={{ fontSize: 12, fill: "#555" }} stroke="none" />
-          <Tooltip content={CustomBarChart} />
-
-          <Bar
-            dataKey="amount"
-            fill="#FF8042"
-            radius={[10, 10, 0, 0]}
-            activeDot={{
-              r: 8,
-              fill: "green",
-            }}
-            activeStyle={{ fill: "green" }}
-          >
+          <Tooltip content={<CustomTooltip />} />
+          <Bar dataKey="amount" fill="#FF8042" radius={[10, 10, 0, 0]}>
             {data.map((entry, index) => (
               <Cell key={index} fill={getBarColor(index)} />
             ))}
