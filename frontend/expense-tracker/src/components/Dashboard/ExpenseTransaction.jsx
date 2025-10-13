@@ -18,17 +18,23 @@ export const ExpenseTransaction = ({ transaction = [], onSeeMore }) => {
       </div>
 
       <div className="mt-6">
-        {transaction.slice(0, 5).map((expense) => (
-          <TransactionInfoCard
-            key={expense._id}
-            title={expense.category}
-            icon={expense.icon}
-            data={moment(expense.date).format("Do MMM YYYY")}
-            amount={expense.amount}
-            type="expense"
-            hideDeleteBtn
-          />
-        ))}
+        {transaction.length === 0 ? (
+          <p className="text-gray-400 text-sm">No expense transactions.</p>
+        ) : (
+          transaction
+            .slice(0, 5)
+            .map((expense) => (
+              <TransactionInfoCard
+                key={expense._id}
+                title={expense.category}
+                icon={expense.icon}
+                data={moment(expense.date).format("Do MMM YYYY")}
+                amount={expense.amount}
+                type="expense"
+                hideDeleteBtn
+              />
+            ))
+        )}
       </div>
     </div>
   );

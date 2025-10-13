@@ -4,7 +4,7 @@ import moment from "moment";
 import "../../../src/index.css";
 import { TransactionInfoCard } from "../Card/TransactionInfoCard";
 
-export const RecentTransactions = ({ transaction = [], onSeeMore }) => {
+export const RecentTransactions = ({ transactions = [], onSeeMore }) => {
   return (
     <div className="bg-white p-6 rounded-2xl shadow-gray-100 border-gray-200/50">
       <div className="flex items-center justify-between">
@@ -17,10 +17,10 @@ export const RecentTransactions = ({ transaction = [], onSeeMore }) => {
         </button>
       </div>
       <div className="mt-6">
-        {transaction.length === 0 ? (
+        {transactions.length === 0 ? (
           <p className="text-gray-400 text-sm">No recent transactions.</p>
         ) : (
-          transaction
+          transactions
             .slice(0, 5)
             .map((item) => (
               <TransactionInfoCard
