@@ -56,4 +56,3 @@ const CustomBarChart = ({ data }) => {
 };
 
 export default CustomBarChart;
-// lkasjdg
