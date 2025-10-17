@@ -1,12 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const IncomeOverView = ({
+const IncomeOverView = ({ transaction }) => {
+  return <div>IncomeOverView</div>;
+};
 
-    transaction,
-}) => {
-  return (
-    <div>IncomeOverView</div>
-  )
-}
-
-export default IncomeOverView
+export default IncomeOverView;
