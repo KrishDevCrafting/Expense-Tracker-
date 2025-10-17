@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { DashboardLayout } from "../Layout/DashboardLayout";
 
-
-
 export default function Income() {
-
-const [openAddIncomeModal,setOpenIncomeModal] = useState(false)
-
+  const [openAddIncomeModal, setOpenIncomeModal] = useState(false);
+  const [loading, setloading] = useState(false);
+  const [openDelelteAlert, setopenDeleteAlert] = useState({
+    show: false,
+    date: null,
+  });
   return (
     <DashboardLayout activeMenu="Income">
       <div className="my-5 mx-auto">
