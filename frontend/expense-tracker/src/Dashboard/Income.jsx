@@ -12,7 +12,22 @@ export default function Income() {
   const [openAddIncomeModal, setOpenIncomeModal] = useState(false);
 
   // Get All Income Details
-  const fetchincomeDetalis = async () => {};
+  const fetchincomeDetalis = async () => {
+    if (loading) return;
+    setloading(true);
+
+    try {
+      const response = await axiosInstance.get(
+        `{API_PATH.INCOME.GET_ALL_INCOME}`
+      );
+
+      if (response.data) {
+        setIncomeData(response.data);
+      }
+    } catch (error) {
+      console.log("Somthing went worng. Please try again.", error);
+    }
+  };
   // handle and income
   const handleAddincome = async () => {};
   // Delete Income
