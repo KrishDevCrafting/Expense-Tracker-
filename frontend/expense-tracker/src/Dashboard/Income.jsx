@@ -18,7 +18,7 @@ export default function Income() {
 
     try {
       const response = await axiosInstance.get(
-        `{API_PATH.INCOME.GET_ALL_INCOME}`
+        `${API_PATHS.INCOME.GET_ALL_INCOME}`
       );
 
       if (response.data) {
@@ -26,6 +26,8 @@ export default function Income() {
       }
     } catch (error) {
       console.log("Somthing went worng. Please try again.", error);
+    } finally {
+      setloading(false);
     }
   };
   // handle and income
