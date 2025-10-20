@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { DashboardLayout } from "../Layout/DashboardLayout";
 import IncomeOverView from "../components/Income/IncomeOverView";
+import { API_PATHS } from "../utils/apiPaths";
 export default function Income() {
   const [incomeData, setIncomeData] = useState([]);
 
