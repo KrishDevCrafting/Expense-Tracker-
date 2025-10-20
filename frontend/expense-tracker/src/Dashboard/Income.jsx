@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DashboardLayout } from "../Layout/DashboardLayout";
 import IncomeOverView from "../components/Income/IncomeOverView";
 import { API_PATHS } from "../utils/apiPaths";
+import axiosInstance from "../utils/axios";
 export default function Income() {
   const [incomeData, setIncomeData] = useState([]);
 
@@ -37,7 +38,13 @@ export default function Income() {
 
   const deleteIncome = async (id) => {};
   // handle downlaod income details
+
   const handleDownloadIncome = async () => {};
+  useEffect(() => {
+    fetchincomeDetalis();
+    return () => {};
+  }, []);
+
   return (
     <DashboardLayout activeMenu="Income">
       <div className="my-5 mx-auto">
