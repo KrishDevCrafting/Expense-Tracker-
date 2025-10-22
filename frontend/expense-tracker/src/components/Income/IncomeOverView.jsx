@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { LuPlus } from "react-icons/lu";
 import CustomBarChart from "../Chats/CustomBarChart";
-import { prepareExpenseBarChartData } from "../../utils/helper";
+import { prepareIncomeBarChartData } from "../../utils/helper";
 
 const IncomeOverView = ({ transaction, transactions, onAddIncome }) => {
   // support both prop names and default to empty array
@@ -10,7 +10,7 @@ const IncomeOverView = ({ transaction, transactions, onAddIncome }) => {
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
-    const result = prepareExpenseBarChartData(tx || []);
+    const result = prepareIncomeBarChartData(tx || []);
     setChartData(result);
 
     return () => {};
@@ -37,7 +37,6 @@ const IncomeOverView = ({ transaction, transactions, onAddIncome }) => {
       </div>
 
       <div className="mt-5">
-        <p className="text-white bg-purple-600"></p>
         <CustomBarChart data={chartData} />
       </div>
     </div>

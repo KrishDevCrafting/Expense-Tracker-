@@ -22,7 +22,7 @@ export default function Income() {
       const response = await axiosInstance.get(
         `${API_PATHS.INCOME.GET_ALL_INCOME}`
       );
-
+      console.log("API Response Data:", response.data);
       if (response.data) {
         setIncomeData(response.data);
       }
