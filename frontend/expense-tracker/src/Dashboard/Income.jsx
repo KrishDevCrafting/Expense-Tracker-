@@ -54,9 +54,6 @@ export default function Income() {
               transactions={incomeData}
               onAddIncome={() => setOpenIncomeModal(true)}
             />
-            <IncomeOverView
-              onAddIncome={() => console.log("onAddIncome prop:", onAddIncome)}
-            />
           </div>
         </div>
       </div>
