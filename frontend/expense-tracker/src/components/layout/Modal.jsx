@@ -1,9 +1,16 @@
 import React from "react";
 
-const Modal = ({ Childern, isOpen, onClose, title }) => {
+// FIX 1: Use 'children' (lowercase) instead of 'Childern'
+const Modal = ({ children, isOpen, onClose, title }) => {
+  // FIX 2: Add this check. If isOpen is false, render nothing.
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <>
-      <div className="fixed top-0 right-0 left-0 z-50 flex justify-center item-center w-full h-[calc(100%-1rem)] max-h-full overflow-y-autoauto overflow-x-hidden bg-black/20 bg-opacity-50">
+      {/* FIX 3: Changed 'item-center' to 'items-center' and 'overflow-y-autoauto' to 'overflow-y-auto' */}
+      <div className="fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden bg-black/20 bg-opacity-50">
         <div className="relative p-4 w-full max-w-2xl max-h-full">
           <div className="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
@@ -12,20 +19,19 @@ const Modal = ({ Childern, isOpen, onClose, title }) => {
               </h3>
               <button
                 type="button"
-                className="text-gray-400 bg-transparent hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center item-center darrk:hover:bg-gray-600 dark:hover:text-white cursor-pointed"
+                // FIX 4: Corrected 'item-center', 'darrk:', and 'cursor-pointed'
+                className="text-gray-400 bg-transparent hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer"
                 onClick={onClose}
               >
-                X
+                X{" "}
+                {/* You might want to use a real 'X' icon or &times; HTML entity here */}
               </button>
             </div>
-            {/* {Modal body} */}
 
-            <div
-              className="
-            p-4 md:p-5 space-y-4
-            "
-            >
-              {Childern}
+            {/* Modal body */}
+            <div className="p-4 md:p-5 space-y-4">
+              {/* FIX 5: Use 'children' (lowercase) here to render your form */}
+              {children}
             </div>
           </div>
         </div>

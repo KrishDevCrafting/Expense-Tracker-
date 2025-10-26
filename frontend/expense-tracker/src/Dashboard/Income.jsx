@@ -4,46 +4,62 @@ import IncomeOverView from "../components/Income/IncomeOverView";
 import { API_PATHS } from "../utils/apiPaths";
 import axiosInstance from "../utils/axios";
 import Modal from "../components/layout/Modal";
+
 export default function Income() {
   const [incomeData, setIncomeData] = useState([]);
 
-  const [loading, setloading] = useState(false);
-  const [openDelelteAlert, setopenDeleteAlert] = useState({
+  // normalized loading setter
+  const [loading, setLoading] = useState(false);
+
+  // fixed spelling and setter name
+  const [openDeleteAlert, setOpenDeleteAlert] = useState({
     show: false,
     date: null,
   });
-  const [openAddIncomeModal, setOpenAddIncomeModal] = useState(true);
 
-  // Get All Income Details
-  const fetchincomeDetalis = async () => {
+  // modal should be closed by default
+  const [openAddIncomeModal, setOpenAddIncomeModal] = useState(false);
+
+  // Get All Income Details (renamed)
+  const fetchIncomeDetails = async () => {
     if (loading) return;
-    setloading(true);
+    setLoading(true);
 
     try {
-      const response = await axiosInstance.get(
-        `${API_PATHS.INCOME.GET_ALL_INCOME}`
-      );
+      const response = await axiosInstance.get(API_PATHS.INCOME.GET_ALL_INCOME);
       console.log("API Response Data:", response.data);
       if (response.data) {
         setIncomeData(response.data);
       }
     } catch (error) {
-      console.log("Somthing went worng. Please try again.", error);
+      console.log("Something went wrong. Please try again.", error);
     } finally {
-      setloading(false);
+      setLoading(false);
     }
   };
-  // handle and income
-  const handleAddincome = async () => {};
-  // Delete Income
 
-  const deleteIncome = async (id) => {};
-  // handle downlaod income details
+  // handle add income (renamed)
+  const handleAddIncome = async (payload) => {
+    // TODO: implement API call to create income and refresh list
+    // await axiosInstance.post(API_PATHS.INCOME.CREATE_INCOME, payload);
+    // await fetchIncomeDetails();
+  };
 
-  const handleDownloadIncome = async () => {};
+  // Delete Income (placeholder)
+  const deleteIncome = async (id) => {
+    // TODO: implement delete API and refresh
+    // await axiosInstance.delete(`${API_PATHS.INCOME.DELETE}/${id}`);
+    // await fetchIncomeDetails();
+  };
+
+  // handle download income details (placeholder)
+  const handleDownloadIncome = async () => {
+    // TODO: implement export logic
+  };
+
   useEffect(() => {
-    fetchincomeDetalis();
-    return () => {};
+    fetchIncomeDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -60,7 +76,7 @@ export default function Income() {
 
         <Modal
           isOpen={openAddIncomeModal}
-          onclose={() => setOpenAddIncomeModal(false)}
+          onClose={() => setOpenAddIncomeModal(false)}
           title="Add Income"
         >
           <div>Add Income Form</div>
