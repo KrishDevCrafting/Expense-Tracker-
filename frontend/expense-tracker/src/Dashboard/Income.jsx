@@ -4,7 +4,7 @@ import IncomeOverView from "../components/Income/IncomeOverView";
 import { API_PATHS } from "../utils/apiPaths";
 import axiosInstance from "../utils/axios";
 import Modal from "../components/layout/Modal";
-
+import AddIncomeForm from "../components/Income/AddIncomeForm";
 export default function Income() {
   const [incomeData, setIncomeData] = useState([]);
 
@@ -40,9 +40,7 @@ export default function Income() {
 
   // handle add income (renamed)
   const handleAddIncome = async (payload) => {
-    // TODO: implement API call to create income and refresh list
-    // await axiosInstance.post(API_PATHS.INCOME.CREATE_INCOME, payload);
-    // await fetchIncomeDetails();
+  
   };
 
   // Delete Income (placeholder)
@@ -79,7 +77,8 @@ export default function Income() {
           onClose={() => setOpenAddIncomeModal(false)}
           title="Add Income"
         >
-          <div>Add Income Form</div>
+          <div className="text-white">Add Income Form</div>
+          <AddIncomeForm onAddIncome={handleAddIncome} />
         </Modal>
       </div>
     </DashboardLayout>
