@@ -12,7 +12,7 @@ export default function Income() {
     show: false,
     date: null,
   });
-  const [openAddIncomeModal, setOpenIncomeModal] = useState(true);
+  const [openAddIncomeModal, setOpenAddIncomeModal] = useState(true);
 
   // Get All Income Details
   const fetchincomeDetalis = async () => {
@@ -53,7 +53,7 @@ export default function Income() {
           <div className="">
             <IncomeOverView
               transactions={incomeData}
-              onAddIncome={() => setOpenIncomeModal(true)}
+              onAddIncome={() => setOpenAddIncomeModal(true)}
             />
           </div>
         </div>
@@ -69,4 +69,3 @@ export default function Income() {
     </DashboardLayout>
   );
 }
-
