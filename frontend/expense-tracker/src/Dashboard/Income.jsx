@@ -39,9 +39,7 @@ export default function Income() {
   };
 
   // handle add income (renamed)
-  const handleAddIncome = async (payload) => {
-  
-  };
+  const handleAddIncome = async (payload) => {};
 
   // Delete Income (placeholder)
   const deleteIncome = async (id) => {
@@ -75,9 +73,9 @@ export default function Income() {
         <Modal
           isOpen={openAddIncomeModal}
           onClose={() => setOpenAddIncomeModal(false)}
+         
           title="Add Income"
         >
-          <div className="text-white">Add Income Form</div>
           <AddIncomeForm onAddIncome={handleAddIncome} />
         </Modal>
       </div>
