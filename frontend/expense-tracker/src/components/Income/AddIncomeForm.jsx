@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Income from "../../Dashboard/Income";
-
+import Input from "../Inputs/Inputs";
 const AddIncomeForm = ({ AddIncomeForm }) => {
   const [income, setIncome] = useState({
     source: "",
@@ -41,7 +41,15 @@ const AddIncomeForm = ({ AddIncomeForm }) => {
         type="date"
       />
 
-      
+      <div className="flex justify-end mt-6">
+        <button
+          type="button"
+          className="add-btn add-btn-fill"
+          onClick={() => onAddIncome(income)}
+        >
+          Add Income
+        </button>
+      </div>
     </div>
   );
 };
