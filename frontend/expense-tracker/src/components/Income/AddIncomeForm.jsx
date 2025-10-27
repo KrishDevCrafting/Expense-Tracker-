@@ -48,7 +48,7 @@ const AddIncomeForm = ({ AddIncomeForm }) => {
         <button
           type="button"
           className="add-btn bg-purple-600 text-white p-2 rounded hover:bg-purple-500"
-          onClick={() => onAddIncome(income)}
+          onClick={() => AddIncomeForm(income)}
         >
           Add Income
         </button>
