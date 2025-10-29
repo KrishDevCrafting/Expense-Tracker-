@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Income from "../../Dashboard/Income";
 import Input from "../Inputs/Inputs";
 import EmojiPickerPopup from "../EmojiPickerPopup";
-const AddIncomeForm = ({ AddIncomeForm }) => {
+
+const AddIncomeForm = ({ onAddIncome }) => {
   const [income, setIncome] = useState({
     source: "",
     amount: "",
@@ -15,6 +15,32 @@ const AddIncomeForm = ({ AddIncomeForm }) => {
       ...income,
       [key]: value,
     });
+
+  const handleSubmit = () => {
+    // basic validation
+    if (!income.source || !String(income.source).trim()) {
+      alert("Source is required");
+      return;
+    }
+    if (!income.amount || isNaN(Number(income.amount)) || Number(income.amount) <= 0) {
+      alert("Enter a valid amount");
+      return;
+    }
+    if (!income.date) {
+      alert("Date is required");
+      return;
+    }
+
+    // call parent handler with normalized data
+    onAddIncome &&
+      onAddIncome({
+        ...income,
+        amount: Number(income.amount),
+      });
+
+    // reset form
+    setIncome({ source: "", amount: "", date: "", icon: "" });
+  };
 
   return (
     <div>
@@ -48,7 +74,7 @@ const AddIncomeForm = ({ AddIncomeForm }) => {
         <button
           type="button"
           className="add-btn bg-purple-600 text-white p-2 rounded hover:bg-purple-500"
-          onClick={() => AddIncomeForm(income)}
+          onClick={handleSubmit}
         >
           Add Income
         </button>

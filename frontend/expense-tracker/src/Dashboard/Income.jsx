@@ -5,6 +5,9 @@ import { API_PATHS } from "../utils/apiPaths";
 import axiosInstance from "../utils/axios";
 import Modal from "../components/layout/Modal";
 import AddIncomeForm from "../components/Income/AddIncomeForm";
+import { toast } from "react-toastify";
+import IncomeList from "../components/Income/IncomeList";
+
 export default function Income() {
   const [incomeData, setIncomeData] = useState([]);
 
@@ -43,24 +46,25 @@ export default function Income() {
     const { source, amount, date, icon } = income;
 
     // Validation Checks
-
-    if (!source.trim()) {
-      toast.error("Sourceis required");
+    if (!source || !String(source).trim()) {
+      toast.error("Source is required");
       return;
     }
 
-    if (!amount || isNaN(amount) || Number(amount) <= 0) {
+    const numAmount = Number(amount);
+    if (!amount || isNaN(numAmount) || numAmount <= 0) {
       toast.error("Amount should be a valid number greater than 0.");
       return;
     }
     if (!date) {
       toast.error("Date is required.");
+      return;
     }
 
     try {
       await axiosInstance.post(API_PATHS.INCOME.ADD_INCOME, {
         source,
-        amount,
+        amount: numAmount,
         date,
         icon,
       });
@@ -74,6 +78,7 @@ export default function Income() {
 
         error.response?.data?.message || error.message
       );
+      toast.error(error.response?.data?.message || "Failed to add income");
     }
   };
 
@@ -104,6 +109,14 @@ export default function Income() {
               onAddIncome={() => setOpenAddIncomeModal(true)}
             />
           </div>
+
+          <IncomeList
+            transactions={incomeData}
+            onDelete={(id) => {
+              setOpenDeleteAlert({ show: true, data: id });
+            }}
+            onDownload={handleDownloadIncome}
+          />
         </div>
 
         <Modal
