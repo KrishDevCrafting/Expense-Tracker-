@@ -19,5 +19,4 @@ const IncomeList = ({ trasactions, onDelete, onDownload }) => {
   );
 };
 
-export default IncomeLis;
-// jshdfg
+export default IncomeList;
