@@ -20,4 +20,3 @@ const IncomeList = ({ trasactions, onDelete, onDownload }) => {
 };
 
 export default IncomeList;
-// bug-income.jsx
