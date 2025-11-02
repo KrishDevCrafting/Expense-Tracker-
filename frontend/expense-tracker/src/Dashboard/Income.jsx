@@ -7,6 +7,7 @@ import Modal from "../components/layout/Modal";
 import AddIncomeForm from "../components/Income/AddIncomeForm";
 import { toast } from "react-toastify";
 import IncomeList from "../components/Income/IncomeList";
+import DeleteAlert from "../components/DeleteAlert";
 
 export default function Income() {
   const [incomeData, setIncomeData] = useState([]);
@@ -14,10 +15,10 @@ export default function Income() {
   // normalized loading setter
   const [loading, setLoading] = useState(false);
 
-  // fixed spelling and setter name
+  // use `data` consistently for the selected id
   const [openDeleteAlert, setOpenDeleteAlert] = useState({
     show: false,
-    date: null,
+    data: null,
   });
 
   // modal should be closed by default
@@ -30,12 +31,13 @@ export default function Income() {
 
     try {
       const response = await axiosInstance.get(API_PATHS.INCOME.GET_ALL_INCOME);
-      console.log("API Response Data:", response.data);
-      if (response.data) {
+      // optional: check shape of response
+      if (response?.data) {
         setIncomeData(response.data);
       }
     } catch (error) {
       console.log("Something went wrong. Please try again.", error);
+      toast.error("Failed to fetch income details");
     } finally {
       setLoading(false);
     }
@@ -70,23 +72,25 @@ export default function Income() {
       });
 
       setOpenAddIncomeModal(false);
-      toast.success("Income added succesfully!");
+      toast.success("Income added successfully!");
       fetchIncomeDetails();
     } catch (error) {
-      console.error(
-        "Error adding income!",
-
-        error.response?.data?.message || error.message
-      );
+      console.error("Error adding income!", error);
       toast.error(error.response?.data?.message || "Failed to add income");
     }
   };
 
-  // Delete Income (placeholder)
+  // Delete Income
   const deleteIncome = async (id) => {
-    // TODO: implement delete API and refresh
-    // await axiosInstance.delete(`${API_PATHS.INCOME.DELETE}/${id}`);
-    // await fetchIncomeDetails();
+    try {
+      await axiosInstance.delete(API_PATHS.INCOME.DELETE_INCOME(id));
+      setOpenDeleteAlert({ show: false, data: null });
+      toast.success("Income deleted successfully!");
+      fetchIncomeDetails();
+    } catch (error) {
+      console.error("Error deleting income!", error);
+      toast.error(error.response?.data?.message || "Failed to delete income");
+    }
   };
 
   // handle download income details (placeholder)
@@ -125,6 +129,23 @@ export default function Income() {
           title="Add Income"
         >
           <AddIncomeForm onAddIncome={handleAddIncome} />
+        </Modal>
+
+        <Modal
+          isOpen={openDeleteAlert.show}
+          title="Delete Income"
+          onClose={() => {
+            setOpenDeleteAlert({
+              show: false,
+              data: null,
+            });
+          }}
+        >
+          <DeleteAlert
+            content="Are you sure you want to delete this income?"
+            onDelete={() => deleteIncome(openDeleteAlert.data)}
+            onCancel={() => setOpenDeleteAlert({ show: false, data: null })}
+          />
         </Modal>
       </div>
     </DashboardLayout>
