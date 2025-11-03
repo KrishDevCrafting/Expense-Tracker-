@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useUserAuth } from "../hooks/useUserAuth";
 import { DashboardLayout } from "../Layout/DashboardLayout";
 import { toast } from "react-toastify";
@@ -21,32 +21,34 @@ export default function Expense() {
   // modal should be closed by default
   const [openAddExpenseModal, setOpenAddExpenseModal] = useState(false);
 
-  // Get All Income Details (renamed)
-  const fetchIncomeDetails = async () => {
+  // Get All expense Details (renamed)
+  const fetchExpenseDetails = async () => {
     if (loading) return;
     setLoading(true);
 
     try {
-      const response = await axiosInstance.get(API_PATHS.INCOME.GET_ALL_INCOME);
+      const response = await axiosInstance.get(
+        API_PATHS.EXPENSE.GET_ALL_EXPENSE
+      );
       // optional: check shape of response
       if (response?.data) {
         setExpenseData(response.data);
       }
     } catch (error) {
       console.log("Something went wrong. Please try again.", error);
-      toast.error("Failed to fetch income details");
+      toast.error("Failed to fetch expense details");
     } finally {
       setLoading(false);
     }
   };
 
   // handle add expense (renamed)
-  const handleAddExpense = async (income) => {
-    const { source, amount, date, icon } = income;
+  const handleAddExpense = async (expense) => {
+    const { category, amount, date, icon } = expense;
 
     // Validation Checks
-    if (!source || !String(source).trim()) {
-      toast.error("Source is required");
+    if (!category || !String(category).trim()) {
+      toast.error("category is required");
       return;
     }
 
@@ -61,21 +63,26 @@ export default function Expense() {
     }
 
     try {
-      await axiosInstance.post(API_PATHS.INCOME.ADD_INCOME, {
-        source,
+      await axiosInstance.post(API_PATHS.EXPENSE.ADD_EXPENSE, {
+        category,
         amount: numAmount,
         date,
         icon,
       });
 
       setOpenAddExpenseModal(false);
-      toast.success("Income added successfully!");
-      fetchIncomeDetails();
+      toast.success("Expense added successfully!");
+      fetchExpenseDetails();
     } catch (error) {
-      console.error("Error adding income!", error);
-      toast.error(error.response?.data?.message || "Failed to add income");
+      console.error("Error adding expense!", error);
+      toast.error(error.response?.data?.message || "Failed to add expense");
     }
   };
+
+  useEffect(() => {
+    fetchExpenseDetails();
+    return () => {};
+  }, []);
 
   return (
     <DashboardLayout activeMenu="Expense">
