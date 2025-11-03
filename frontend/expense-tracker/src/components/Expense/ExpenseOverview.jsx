@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { LuPlug } from "react-icons/lu";
+import { prepareExpenseBarChartData } from "../../utils/helper";
+const ExpenseOverview = ({ transactions, onExpenseIncome }) => {
+  const [charData, setChartData] = useState([]);
 
-const ExpenseOverview = ({
-    transactions,onExpenseIncome
-}) => {
-  return (
-    <div>ExpenseOverview</div>
-  )
-}
+  useEffect(() => {
+    const result = prepareExpenseBarChartData(transactions);
+    setChartData(result);
 
-export default ExpenseOverview
+    return () => {};
+  }, [transactions]);
+
+  return <div>ExpenseOverview</div>;
+};
+
+export default ExpenseOverview;
