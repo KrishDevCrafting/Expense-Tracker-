@@ -4,6 +4,7 @@ import { DashboardLayout } from "../Layout/DashboardLayout";
 import { toast } from "react-toastify";
 import { API_PATHS } from "../utils/apiPaths";
 import axiosInstance from "../utils/axios";
+import ExpenseOverview from "../components/Expense/ExpenseOverview";
 export default function Expense() {
   useUserAuth();
 
@@ -86,7 +87,16 @@ export default function Expense() {
 
   return (
     <DashboardLayout activeMenu="Expense">
-      <div className="my-5 mx-auto"></div>
+      <div className="my-5 mx-auto">
+        <div className="grid grid-cols-1 gap-1">
+          <div className="">
+            <ExpenseOverview
+              transactions={ExpenseData}
+              onExpenseIncome={() => setOpenAddExpenseModal}
+            />
+          </div>
+        </div>
+      </div>
     </DashboardLayout>
   );
 }
