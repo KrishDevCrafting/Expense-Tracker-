@@ -11,7 +11,29 @@ const ExpenseOverview = ({ transactions, onExpenseIncome }) => {
     return () => {};
   }, [transactions]);
 
-  return <div>ExpenseOverview</div>;
+  return (
+    <>
+      <div className="">
+        <div
+        className=""
+        >
+          <div
+          className=""
+          >
+            <h5>Expense Overview</h5>
+            <p className="">
+              Track your spending trends over time and gain insights your money
+              goes.
+            </p>
+          </div>
+          <button className="" onClick={onExpenseIncome}>
+            <LuPlug className="" />
+            Add Expense
+          </button>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default ExpenseOverview;
