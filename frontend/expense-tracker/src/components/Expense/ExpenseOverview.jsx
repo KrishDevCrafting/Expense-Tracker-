@@ -13,13 +13,9 @@ const ExpenseOverview = ({ transactions, onExpenseIncome }) => {
 
   return (
     <>
-      <div className="">
-        <div
-        className=""
-        >
-          <div
-          className=""
-          >
+      <div className="bg-white p-6 rounded-2xl shadow-gray-100 border-gray-200/50">
+        <div className="">
+          <div className="">
             <h5>Expense Overview</h5>
             <p className="">
               Track your spending trends over time and gain insights your money
