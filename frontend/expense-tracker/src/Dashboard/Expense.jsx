@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import { API_PATHS } from "../utils/apiPaths";
 import axiosInstance from "../utils/axios";
 import ExpenseOverview from "../components/Expense/ExpenseOverview";
+import AddExpenseForm from "../components/Expense/AddExpenseForm";
+import Modal from "../components/layout/Modal";
 export default function Expense() {
   useUserAuth();
 
@@ -96,6 +98,14 @@ export default function Expense() {
             />
           </div>
         </div>
+
+        <Modal
+          isOpen={openAddExpenseModal}
+          onclose={() => setOpenAddExpenseModal(false)}
+          title="Add Expense"
+        >
+          <AddExpenseForm openAddExpenseModal={handleAddExpense} />
+        </Modal>
       </div>
     </DashboardLayout>
   );
