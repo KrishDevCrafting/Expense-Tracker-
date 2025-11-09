@@ -94,7 +94,7 @@ export default function Expense() {
           <div className="">
             <ExpenseOverview
               transactions={ExpenseData}
-              onExpenseIncome={() => setOpenAddExpenseModal}
+              onExpenseIncome={() => setOpenAddExpenseModal(true)}
             />
           </div>
         </div>
