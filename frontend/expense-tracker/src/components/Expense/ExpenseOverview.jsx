@@ -3,7 +3,7 @@ import { LuPlug } from "react-icons/lu";
 import { prepareExpenseBarChartData } from "../../utils/helper";
 import CustomLineChart from "../Chats/CustomLineChart";
 
-const ExpenseOverview = ({ transactions = [], onExpenseIncome = () => {} }) => {
+const ExpenseOverview = ({ transactions, onExpenseIncome }) => {
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const ExpenseOverview = ({ transactions = [], onExpenseIncome = () => {} }) => {
 
         <button
           type="button"
-          onClick={() => onExpenseIncome?.()}
+          onClick={onExpenseIncome}
           aria-label="Add Expense"
           className="flex items-center gap-2 bg-red-600 text-white px-3 py-2 rounded-md hover:bg-red-700 transition"
         >
