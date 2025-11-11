@@ -101,10 +101,10 @@ export default function Expense() {
 
         <Modal
           isOpen={openAddExpenseModal}
-          onclose={() => setOpenAddExpenseModal(false)}
+          onClose={() => setOpenAddExpenseModal(false)}
           title="Add Expense"
         >
-          <AddExpenseForm openAddExpenseModal={handleAddExpense} />
+          <AddExpenseForm onAddExpense={handleAddExpense} />
         </Modal>
       </div>
     </DashboardLayout>

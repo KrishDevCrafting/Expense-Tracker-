@@ -9,10 +9,9 @@ import {
   AreaChart,
 } from "recharts";
 
-const CustomTooltip = ({ active, payload }) => {
+const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     const item = payload[0].payload || {};
-    const label = item.category || item.name || item.month || "";
     const amount = item.amount ?? item.value ?? 0;
 
     return (
@@ -30,10 +29,23 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 const CustomLineChart = ({ data = [] }) => {
+  const xKey = React.useMemo(() => {
+    if (!Array.isArray(data) || data.length === 0) return "name";
+    const first = data[0] || {};
+    if ("month" in first) return "month";
+    if ("name" in first) return "name";
+    if ("category" in first) return "category";
+    const keys = Object.keys(first);
+    return keys.length ? keys[0] : "name";
+  }, [data]);
+
   return (
     <div className="w-full h-60">
       <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={data}>
+        <AreaChart
+          data={data || []}
+          margin={{ top: 6, right: 12, left: 0, bottom: 0 }}
+        >
           <defs>
             <linearGradient id="incomeGradient" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#875CF5" stopOpacity={0.4} />
@@ -42,9 +54,13 @@ const CustomLineChart = ({ data = [] }) => {
           </defs>
 
           <CartesianGrid stroke="none" vertical={false} />
-          <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#555" }} />
+          <XAxis dataKey={xKey} tick={{ fontSize: 12, fill: "#555" }} />
           <YAxis tick={{ fontSize: 12, fill: "#555" }} />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip
+            content={<CustomTooltip />}
+            formatter={(value) => `₹${value}`}
+            labelFormatter={(lbl) => lbl}
+          />
           <Area
             type="monotone"
             dataKey="amount"

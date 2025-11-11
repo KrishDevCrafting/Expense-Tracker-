@@ -26,7 +26,7 @@ const ExpenseOverview = ({ transactions, onExpenseIncome }) => {
           type="button"
           onClick={onExpenseIncome}
           aria-label="Add Expense"
-          className="flex items-center gap-2 bg-red-600 text-white px-3 py-2 rounded-md hover:bg-red-700 transition"
+          className="flex items-center gap-2 bg-purple-500 text-white px-3 py-2 rounded-md hover:bg-red-700 transition"
         >
           <LuPlug className="text-lg" />
           <span className="text-sm font-medium">Add Expense</span>
