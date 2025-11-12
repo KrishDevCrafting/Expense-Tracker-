@@ -7,6 +7,7 @@ import axiosInstance from "../utils/axios";
 import ExpenseOverview from "../components/Expense/ExpenseOverview";
 import AddExpenseForm from "../components/Expense/AddExpenseForm";
 import Modal from "../components/layout/Modal";
+import ExpenseList from "./ExpenseList";
 export default function Expense() {
   useUserAuth();
 
@@ -45,17 +46,21 @@ export default function Expense() {
     }
   };
 
-  // Delete Income
-  const handleDeleteExpenseDetails = async (id) => {
+  // Delete Expense
+  const deleteExpense = async (id) => {
     try {
-      await axiosInstance.delete(API_PATHS.INCOME.DELETE_INCOME(id));
+      await axiosInstance.delete(API_PATHS.EXPENSE.DELETE_EXPENSE(id));
       setOpenDeleteAlert({ show: false, data: null });
-      toast.success("Income deleted successfully!");
-      fetchIncomeDetails();
+      toast.success("expense deleted successfully!");
+      fetchExpenseDetails();
     } catch (error) {
-      console.error("Error deleting income!", error);
-      toast.error(error.response?.data?.message || "Failed to delete income");
+      console.error("Error deleting expense!", error);
+      toast.error(error.response?.data?.message || "Failed to delete expense");
     }
+  };
+
+  const handleDeleteExpenseDetails = async () => {
+    // TODO: implement export logic
   };
 
   // handle add expense (renamed)
@@ -107,7 +112,7 @@ export default function Expense() {
           <div className="">
             <ExpenseOverview
               transactions={ExpenseData}
-              onExpenseIncome={() => setOpenAddExpenseModal(true)}
+              onExpenseexpense={() => setOpenAddExpenseModal(true)}
             />
           </div>
         </div>
