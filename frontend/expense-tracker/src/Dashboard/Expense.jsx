@@ -45,6 +45,19 @@ export default function Expense() {
     }
   };
 
+  // Delete Income
+  const handleDeleteExpenseDetails = async (id) => {
+    try {
+      await axiosInstance.delete(API_PATHS.INCOME.DELETE_INCOME(id));
+      setOpenDeleteAlert({ show: false, data: null });
+      toast.success("Income deleted successfully!");
+      fetchIncomeDetails();
+    } catch (error) {
+      console.error("Error deleting income!", error);
+      toast.error(error.response?.data?.message || "Failed to delete income");
+    }
+  };
+
   // handle add expense (renamed)
   const handleAddExpense = async (expense) => {
     const { category, amount, date, icon } = expense;
@@ -98,7 +111,16 @@ export default function Expense() {
             />
           </div>
         </div>
-
+        <ExpenseList
+          transactions={expenseData}
+          onDelete={(id) => {
+            setOpenDeleteAlert({
+              show: true,
+              data: id,
+            });
+          }}
+          onDowload={handleDeleteExpenseDetails}
+        />
         <Modal
           isOpen={openAddExpenseModal}
           onClose={() => setOpenAddExpenseModal(false)}
