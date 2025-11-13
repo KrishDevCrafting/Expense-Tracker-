@@ -117,7 +117,8 @@ export default function Expense() {
           </div>
         </div>
         <ExpenseList
-          transactions={expenseData}
+/* ********************************************************** */
+          transactions={ExpenseData || []}
           onDelete={(id) => {
             setOpenDeleteAlert({
               show: true,
