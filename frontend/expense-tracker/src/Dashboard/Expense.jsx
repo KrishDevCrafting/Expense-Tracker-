@@ -11,7 +11,7 @@ import ExpenseList from "./ExpenseList";
 export default function Expense() {
   useUserAuth();
 
-  const [ExpenseData, setExpenseData] = useState([]);
+  const [expenseData, setExpenseData] = useState([]);
 
   // normalized loading setter
   const [loading, setLoading] = useState(false);
@@ -111,21 +111,20 @@ export default function Expense() {
         <div className="grid grid-cols-1 gap-1">
           <div className="">
             <ExpenseOverview
-              transactions={ExpenseData}
-              onExpenseexpense={() => setOpenAddExpenseModal(true)}
+              transactions={expenseData}
+              onExpenseIncome={() => setOpenAddExpenseModal(true)}
             />
           </div>
         </div>
         <ExpenseList
-/* ********************************************************** */
-          transactions={ExpenseData || []}
+          transactions={expenseData || []}
           onDelete={(id) => {
             setOpenDeleteAlert({
               show: true,
               data: id,
             });
           }}
-          onDowload={handleDeleteExpenseDetails}
+          onDownload={handleDeleteExpenseDetails}
         />
         <Modal
           isOpen={openAddExpenseModal}

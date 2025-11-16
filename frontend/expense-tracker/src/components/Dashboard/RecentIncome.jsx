@@ -1,6 +1,7 @@
 import React from "react";
 import { LuArrowRight } from "react-icons/lu";
 import { TransactionInfoCard } from "../Card/TransactionInfoCard";
+import moment from "moment";
 const RecentIncome = ({ transaction, onSeeMore }) => {
   return (
     <div className="card">

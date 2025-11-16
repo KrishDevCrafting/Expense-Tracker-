@@ -73,7 +73,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
               <RecentTransactions
-                transactions={dashboardData?.recentTransactions || []}
+                transaction={dashboardData?.recentTransactions || []}
                 onSeeMore={() => navigate("/expense")}
               />
               <FinanceOverview
@@ -82,7 +82,7 @@ export default function Home() {
                 totalExpense={dashboardData?.totalExpense || 0}
               />
               <ExpenseTransaction
-                transactions={
+                transaction={
                   dashboardData?.last30daysExpense?.transaction || []
                 }
                 onSeeMore={() => navigate("/expense")}
@@ -101,7 +101,7 @@ export default function Home() {
               />
 
               <RecentIncome
-                transactions={
+                transaction={
                   dashboardData?.last60daysIncome?.transaction || []
                 }
                 onSeeMore={() => navigate("/income")}

@@ -66,7 +66,7 @@ exports.loginUser = async (req, res) => {
     });
   } catch (err) {
     res.status(500).json({
-      message: "Error registering user",
+      message: "Error logging in user",
       error: err.message,
     });
   }
