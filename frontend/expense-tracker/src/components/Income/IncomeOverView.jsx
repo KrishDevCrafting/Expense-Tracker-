@@ -28,7 +28,7 @@ const IncomeOverView = ({ transaction, transactions, onAddIncome }) => {
 
         <button
           type="button"
-          className="flex item-center gap-1.5 text-xs md:text-sm font-medium text-puple-600 whitespace-nowrap bg--puple-50 border-purple-100 rounded-lg px-4 py-2 cursor-pointer"
+          className="flex items-center gap-1.5 text-xs md:text-sm font-medium text-purple-600 whitespace-nowrap bg-purple-50 border border-purple-100 rounded-lg px-4 py-2 cursor-pointer hover:bg-purple-100"
           onClick={onAddIncome}
         >
           <LuPlus className="text-lg" />

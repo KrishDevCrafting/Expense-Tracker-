@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import {
   LuUtensils,
   LuTrendingUp,
@@ -25,7 +25,7 @@ export const TransactionInfoCard = ({
       <div className="w-12 h-12 flex items-center justify-center text-xl text-gray-800 bg-gray-100 rounded-full">
         {icon ? <img src={icon} alt={title} className="" /> : <LuUtensils />}
       </div>
-      <div className="flex-1 flex item-center justify-between">
+      <div className="flex-1 flex items-center justify-between">
         <div>
           <p className="text-sm text-gray-700 font-medium">{title}</p>
           <p
@@ -47,16 +47,12 @@ export const TransactionInfoCard = ({
             </button>
           )}
           <div
-            className={`flex item-center gap-2 px-3 py-1.5 rounded-md ${getAmountStyles()}`}
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-md ${getAmountStyles()}`}
           >
-            <h6
-              className="
-            text-xs font-medium
-            "
-            >
+            <h6 className="text-xs font-medium">
               {type === "income" ? "+" : "-"}${amount}
             </h6>
-            {type === "income" ? <LuTrendingUp /> : LuTrendingDown}
+            {type === "income" ? <LuTrendingUp /> : <LuTrendingDown />}
           </div>
         </div>
       </div>
