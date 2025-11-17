@@ -7,6 +7,7 @@ import axiosInstance from "../utils/axios";
 import ExpenseOverview from "../components/Expense/ExpenseOverview";
 import AddExpenseForm from "../components/Expense/AddExpenseForm";
 import Modal from "../components/layout/Modal";
+import DeleteAlert from "../components/DeleteAlert";
 import ExpenseList from "./ExpenseList";
 export default function Expense() {
   useUserAuth();
@@ -132,6 +133,17 @@ export default function Expense() {
           title="Add Expense"
         >
           <AddExpenseForm onAddExpense={handleAddExpense} />
+        </Modal>
+        <Modal
+          isOpen={openDeleteAlert.show}
+          onClose={() => setOpenDeleteAlert({ show: false, data: null })}
+          title="Delete Expense"
+        >
+          <DeleteAlert
+            content="Are you sure you want to delete this expense?"
+            onDelete={() => deleteExpense(openDeleteAlert.data)}
+            onCancel={() => setOpenDeleteAlert({ show: false, data: null })}
+          />
         </Modal>
       </div>
     </DashboardLayout>
