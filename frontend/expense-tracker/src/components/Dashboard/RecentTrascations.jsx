@@ -4,7 +4,12 @@ import moment from "moment";
 import "../../../src/index.css";
 import { TransactionInfoCard } from "../Card/TransactionInfoCard";
 
-export const RecentTransactions = ({ transactions = [], onSeeMore }) => {
+export const RecentTransactions = ({ transactions = [], transaction = [], onSeeMore }) => {
+  // Support both prop names: `transactions` (plural) and `transaction` (singular)
+  const tx = (Array.isArray(transactions) && transactions.length > 0)
+    ? transactions
+    : (Array.isArray(transaction) ? transaction : []);
+
   return (
     <div className="bg-white p-6 rounded-2xl shadow-gray-100 border-gray-200/50">
       <div className="flex items-center justify-between">
@@ -17,22 +22,20 @@ export const RecentTransactions = ({ transactions = [], onSeeMore }) => {
         </button>
       </div>
       <div className="mt-6">
-        {transactions.length === 0 ? (
+        {tx.length === 0 ? (
           <p className="text-gray-400 text-sm">No recent transactions.</p>
         ) : (
-          transactions
-            .slice(0, 5)
-            .map((item) => (
-              <TransactionInfoCard
-                key={item._id}
-                title={item.type === "expense" ? item.category : item.source}
-                icon={item.icon}
-                data={moment(item.date).format("DD MMM YYYY")}
-                amount={item.amount}
-                type={item.type}
-                hideDeleteBtn
-              />
-            ))
+          tx.slice(0, 5).map((item) => (
+            <TransactionInfoCard
+              key={item._id}
+              title={item.type === "expense" ? item.category : item.source}
+              icon={item.icon}
+              data={moment(item.date).format("DD MMM YYYY")}
+              amount={item.amount}
+              type={item.type}
+              hideDeleteBtn
+            />
+          ))
         )}
       </div>
     </div>
