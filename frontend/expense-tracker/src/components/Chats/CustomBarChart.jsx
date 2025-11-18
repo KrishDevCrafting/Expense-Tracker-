@@ -22,7 +22,7 @@ const CustomBarChart = ({ data = [] }) => {
         : "category" in data[0] // Check 4: Does "category" exist?
         ? "category"
         : null // If none exist
-      : null; // If data is empty
+      : null; 
 
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
