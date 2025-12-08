@@ -29,12 +29,12 @@ connectDB();
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.get("/", (req, res) => {
-  const PORT = process.env.PORT || 7000;
+  const PORT = process.env.PORT || 8080;
   res.send(`<h1>
         Yayyy sever is running!
         ${PORT}
         </h1>`);
 });
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`server is running on port ${PORT}`));
