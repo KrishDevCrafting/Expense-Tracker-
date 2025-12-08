@@ -113,13 +113,16 @@ export default function SignUp() {
           </div>
 
           {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
-          <button type="submit" className="btn-primary">
+          <button
+            type="submit"
+            className="bg-purple-500 hover:bg-purple-700 text-white px-3 py-2 rounded-lg"
+          >
             SIGN UP
           </button>
 
           <p className="text-[13px] text-slate-800 mt-3">
             Already have an account?
-            <Link className="font-medium text-primary underline" to="/login">
+            <Link className="font-medium text-primary underline px-1" to="/login">
               Login
             </Link>
           </p>
