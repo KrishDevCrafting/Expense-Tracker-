@@ -78,7 +78,9 @@ export default function SignUp() {
   return (
     <AuthLayout>
       <div className="w-full max-w-md mx-auto px-4 py-8 mt-8 md:mt-0">
-        <h3 className="text-2xl md:text-3xl font-semibold text-black text-center">Create an account</h3>
+        <h3 className="text-2xl md:text-3xl font-semibold text-black text-center">
+          Create an account
+        </h3>
         <p className="text-sm md:text-base text-slate-700 mt-2 mb-6 text-center">
           Join us today by entering your details below.
         </p>
@@ -98,7 +100,7 @@ export default function SignUp() {
               value={email}
               onChange={({ target }) => setEmail(target.value)}
               label="Email Address"
-              placeholder="Enter your email"
+              placeholder="Enter your Krish"
               type="email"
             />
             <div className="col-span-2"></div>
@@ -123,7 +125,10 @@ export default function SignUp() {
 
           <p className="text-[13px] text-slate-800 mt-3">
             Already have an account?
-            <Link className="font-medium text-primary underline px-1" to="/login">
+            <Link
+              className="font-medium text-primary underline px-1"
+              to="/login"
+            >
               Login
             </Link>
           </p>
