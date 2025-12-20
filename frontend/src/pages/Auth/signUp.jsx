@@ -77,11 +77,10 @@ export default function SignUp() {
 
   return (
     <AuthLayout>
-      <div className="lg:w-[100%] h-auto md:h-full mt-10 md:mt-0 flex-col justify-center">
-        <h3 className="text-lg font-semibold text-black">Create an account</h3>{" "}
-        {/* Fix class */}
-        <p className="text-xs text-slate-700 mt-[5px] mb-6 ">
-          Join us Today by entering your details below.
+      <div className="w-full max-w-md mx-auto px-4 py-8 mt-8 md:mt-0">
+        <h3 className="text-2xl md:text-3xl font-semibold text-black text-center">Create an account</h3>
+        <p className="text-sm md:text-base text-slate-700 mt-2 mb-6 text-center">
+          Join us today by entering your details below.
         </p>
         <form onSubmit={handleSign}>
           <ProfilePhotoSelector image={profilePic} setImage={setProfilePic} />
@@ -113,12 +112,14 @@ export default function SignUp() {
           </div>
 
           {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
-          <button
-            type="submit"
-            className="bg-purple-500 hover:bg-purple-700 text-white px-3 py-2 rounded-lg"
-          >
-            SIGN UP
-          </button>
+          <div className="mt-4">
+            <button
+              type="submit"
+              className="w-full md:w-auto bg-purple-500 hover:bg-purple-700 text-white px-4 py-2 rounded-lg block"
+            >
+              SIGN UP
+            </button>
+          </div>
 
           <p className="text-[13px] text-slate-800 mt-3">
             Already have an account?
