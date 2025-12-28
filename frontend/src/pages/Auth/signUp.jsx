@@ -129,4 +129,3 @@ export default function SignUp() {
     </AuthLayout>
   );
 }
-// All bugs are fix ready to deploy
