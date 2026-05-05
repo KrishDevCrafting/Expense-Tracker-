@@ -38,12 +38,20 @@ exports.getAllExpense = async (req, res) => {
 };
 // deleteExpense
 exports.deleteExpense = async (req, res) => {
-  // const userId = req.user.id;
+  const userId = req.user._id;
 
   try {
+    const expense = await Expense.findById(req.params.id);
+    if (!expense) {
+      return res.status(404).json({ message: "Expense not found" });
+    }
+    // Ownership check — only the owner can delete
+    if (expense.userId.toString() !== userId.toString()) {
+      return res.status(403).json({ message: "Not authorized to delete this expense" });
+    }
     await Expense.findByIdAndDelete(req.params.id);
     res.json({
-      message: "Expense delete succesful",
+      message: "Expense deleted successfully",
     });
   } catch (error) {
     res.status(500).json({

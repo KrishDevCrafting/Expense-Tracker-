@@ -15,12 +15,12 @@ const IncomeSchema = new mongoose.Schema(
     },
     source: {
       type: String,
-      require: true,
+      required: true,
     },
 
     amount: {
       type: Number,
-      require: true,
+      required: true,
     },
 
     date: {

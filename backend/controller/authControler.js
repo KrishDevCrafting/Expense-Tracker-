@@ -35,7 +35,12 @@ exports.registerUser = async (req, res) => {
 
     res.status(201).json({
       id: user._id,
-      user,
+      user: {
+        _id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        profileImageUrl: user.profileImageUrl,
+      },
       token: generateToken(user._id),
     });
   } catch (err) {
