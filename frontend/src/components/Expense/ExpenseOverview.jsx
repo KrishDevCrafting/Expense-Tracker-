@@ -13,11 +13,11 @@ const ExpenseOverview = ({ transactions, onExpenseIncome }) => {
   }, [transactions]);
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-[#1e1e2f] p-6 rounded-2xl shadow-sm dark:shadow-none border border-gray-200/50 dark:border-white/10">
       <div className="flex items-start justify-between">
         <div>
-          <h5 className="text-lg font-semibold">Expense Overview</h5>
-          <p className="text-sm text-gray-500 mt-1">
+          <h5 className="text-lg font-semibold dark:text-white">Expense Overview</h5>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Track your spending trends over time and see where your money goes.
           </p>
         </div>

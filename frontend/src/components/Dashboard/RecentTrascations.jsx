@@ -11,11 +11,11 @@ export const RecentTransactions = ({ transactions = [], transaction = [], onSeeM
     : (Array.isArray(transaction) ? transaction : []);
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-gray-100 border-gray-200/50">
+    <div className="bg-white dark:bg-[#1e1e2f] p-6 rounded-2xl shadow-gray-100 dark:shadow-none border border-gray-200/50 dark:border-white/10">
       <div className="flex items-center justify-between">
-        <h5 className="text-lg">Recent Transactions</h5>
+        <h5 className="text-lg dark:text-white">Recent Transactions</h5>
         <button
-          className="flex items-center gap-3 text-[12px] font-medium text-gray-700 hover:text-purple-500 bg-gray-50 hover:bg-purple-50 px-4 py-1.5 rounded-lg border border-gray-200/50 cursor-pointer"
+          className="flex items-center gap-3 text-[12px] font-medium text-gray-700 dark:text-gray-300 hover:text-purple-500 bg-gray-50 dark:bg-white/5 hover:bg-purple-50 dark:hover:bg-purple-500/10 px-4 py-1.5 rounded-lg border border-gray-200/50 dark:border-white/10 cursor-pointer"
           onClick={onSeeMore}
         >
           See All <LuArrowRight className="text-base" />
@@ -23,7 +23,7 @@ export const RecentTransactions = ({ transactions = [], transaction = [], onSeeM
       </div>
       <div className="mt-6">
         {tx.length === 0 ? (
-          <p className="text-gray-400 text-sm">No recent transactions.</p>
+          <p className="text-gray-400 dark:text-gray-500 text-sm">No recent transactions.</p>
         ) : (
           tx.slice(0, 5).map((item) => (
             <TransactionInfoCard

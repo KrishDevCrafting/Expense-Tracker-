@@ -10,14 +10,14 @@ const Input = ({ value, onChange, placeholder, label, type }) => {
 
   return (
     <div>
-      <label className="text-[13px] text-slate-800">{label}</label>
+      <label className="text-[13px] text-slate-800 dark:text-gray-300">{label}</label>
       <div className="mb-4">
         <input
           type={
             type === "password" ? (showPassword ? "text" : "password") : type
           }
           placeholder={placeholder}
-          className="w-full bg-slate-100 px-4 py-2 rounded border border-slate-200 outline-none focus:border-purple-500"
+          className="w-full bg-slate-100 dark:bg-white/10 px-4 py-2 rounded border border-slate-200 dark:border-white/10 outline-none focus:border-purple-500 dark:text-white dark:placeholder-gray-500"
           value={value}
           onChange={onChange}
         />

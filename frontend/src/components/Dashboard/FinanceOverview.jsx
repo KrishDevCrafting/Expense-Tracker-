@@ -17,7 +17,7 @@ export const FinanceOverview = ({
     <>
       <div className="card">
         <div className="flex items-center justify-between">
-          <h5 className="text-lg">FinanceOverview</h5>
+          <h5 className="text-lg dark:text-white">FinanceOverview</h5>
         </div>
 
         <CustomPiechart

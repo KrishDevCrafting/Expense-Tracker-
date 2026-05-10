@@ -51,17 +51,17 @@ const Login = () => {
 
   return (
     <AuthLayout>
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-transparent py-12 px-4">
         <div className="w-full max-w-md">
-          <div className="bg-white shadow-md rounded-2xl p-8">
+          <div className="bg-white dark:bg-[#1e1e2f] shadow-md dark:shadow-lg rounded-2xl p-8 border border-transparent dark:border-white/10">
             <div className="flex flex-col items-center mb-6">
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-600 to-indigo-500 flex items-center justify-center text-white text-2xl font-bold">
                 ET
               </div>
-              <h3 className="mt-4 text-2xl font-semibold text-gray-800">
+              <h3 className="mt-4 text-2xl font-semibold text-gray-800 dark:text-white">
                 Welcome Back
               </h3>
-              <p className="mt-1 text-sm text-gray-500 text-center">
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 text-center">
                 Please enter your details to log in
               </p>
             </div>
@@ -86,7 +86,7 @@ const Login = () => {
               />
 
               {error && (
-                <div className="text-sm text-red-700 bg-red-50 border border-red-100 px-3 py-2 rounded">
+                <div className="text-sm text-red-700 bg-red-50 dark:bg-red-500/10 border border-red-100 dark:border-red-500/20 px-3 py-2 rounded">
                   {error}
                 </div>
               )}
@@ -99,14 +99,14 @@ const Login = () => {
                 LOGIN
               </button>
 
-              <div className="flex items-center justify-between text-sm text-gray-500">
+              <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
                 <Link to="/forgot-password" className="hover:underline">
                   Forgot password?
                 </Link>
                 <p>
                   Don't have an account?{" "}
                   <Link
-                    className="font-medium text-purple-600 hover:underline"
+                    className="font-medium text-purple-600 dark:text-purple-400 hover:underline"
                     to="/signup"
                   >
                     Sign up
@@ -116,7 +116,7 @@ const Login = () => {
             </form>
           </div>
 
-          <p className="text-center text-xs text-gray-400 mt-4">
+          <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-4">
             By continuing you agree to our Terms & Privacy.
           </p>
         </div>

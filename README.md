@@ -176,7 +176,7 @@ The dashboard uses **MongoDB aggregation pipelines** (`$match`, `$group`, `$sum`
 - [ ] Category-wise expense breakdown charts
 - [ ] Date range filters for transactions
 - [ ] Recurring transaction support
-- [ ] Dark mode toggle
+- [x] Dark mode toggle ✅
 
 ---
 

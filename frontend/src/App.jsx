@@ -6,30 +6,33 @@ import Income from "./Dashboard/Income";
 import Home from "./Dashboard/Home";
 import Expense from "./Dashboard/Expense";
 import UserProvider from "./context/Context";
+import ThemeProvider from "./context/ThemeContext";
 import { Toaster } from "react-hot-toast";
 function App() {
   return (
     <>
-      <UserProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signUp" element={<SignUp />} />
-            <Route path="/dashboard" element={<Home />} />
-            <Route path="/income" element={<Income />} />
-            <Route path="/expense" element={<Expense />} />
-          </Routes>
-        </Router>
-        <Toaster
-          toastOptions={{
-            className: "",
-            style: {
-              fontSize: "13px",
-            },
-          }}
-        />
-      </UserProvider>
+      <ThemeProvider>
+        <UserProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signUp" element={<SignUp />} />
+              <Route path="/dashboard" element={<Home />} />
+              <Route path="/income" element={<Income />} />
+              <Route path="/expense" element={<Expense />} />
+            </Routes>
+          </Router>
+          <Toaster
+            toastOptions={{
+              className: "",
+              style: {
+                fontSize: "13px",
+              },
+            }}
+          />
+        </UserProvider>
+      </ThemeProvider>
     </>
   );
 }

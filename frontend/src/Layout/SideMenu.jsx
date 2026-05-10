@@ -25,7 +25,7 @@ export function SideMenu({ activeMenu }) {
   return (
     <div
       className="w-64 h-[calc(100vh-61px)]
-    bg-white  border-r border-gray-200/50 p-5 sticky top-[61px] z-20
+    bg-white dark:bg-[#16162a] border-r border-gray-200/50 dark:border-white/10 p-5 sticky top-[61px] z-20
     "
     >
       <div className="flex flex-col items-center justify-center gap-3 mt-7">
@@ -43,7 +43,7 @@ export function SideMenu({ activeMenu }) {
             style="text-xl"
           />
         )}
-        <h5 className="text-gray-950 font-medium leading-6">
+        <h5 className="text-gray-950 dark:text-gray-100 font-medium leading-6">
           {user?.fullName || ""}
         </h5>
       </div>
@@ -52,7 +52,9 @@ export function SideMenu({ activeMenu }) {
           key={`menu_${index}`}
           type="button"
           className={`w-full flex items-center gap-4 text-[15px] ${
-            activeMenu === item.label ? "text-white bg-indigo-600" : ""
+            activeMenu === item.label
+              ? "text-white bg-indigo-600"
+              : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5"
           } py-3 px-6 rounded-lg mb-3`}
           onClick={() => handleClick(item.path)}
         >

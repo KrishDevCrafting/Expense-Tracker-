@@ -13,7 +13,7 @@ export const DashboardLayout = ({ children, activeMenu }) => {
   console.log("Current user from Layout:", user);
 
   return (
-    <div className="">
+    <div className="bg-gray-50 dark:bg-[#0f0f1e] min-h-screen">
       <Navbar activeMenu={activeMenu} />
 
       {user && (

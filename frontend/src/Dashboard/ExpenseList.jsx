@@ -5,14 +5,14 @@ import { TransactionInfoCard } from "../components/Card/TransactionInfoCard";
 
 const ExpenseList = ({ transactions = [], onDelete = () => {}, onDownload = () => {} }) => {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-[#1e1e2f] p-6 rounded-2xl shadow-sm dark:shadow-none border border-gray-200/50 dark:border-white/10">
       <div className="flex items-center justify-between mb-6">
-        <h5 className="text-lg font-semibold">Expense List</h5>
+        <h5 className="text-lg font-semibold dark:text-white">Expense List</h5>
 
         <button
           type="button"
           onClick={onDownload}
-          className="flex items-center gap-2 text-sm text-gray-700 hover:text-gray-900"
+          className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           aria-label="Download expenses"
         >
           <LuDownload className="text-base" /> Download
@@ -21,7 +21,7 @@ const ExpenseList = ({ transactions = [], onDelete = () => {}, onDownload = () =
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {transactions.length === 0 ? (
-          <p className="text-sm text-gray-400 col-span-full">No expenses found.</p>
+          <p className="text-sm text-gray-400 dark:text-gray-500 col-span-full">No expenses found.</p>
         ) : (
           transactions.map((expense) => (
             <TransactionInfoCard

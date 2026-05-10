@@ -45,7 +45,7 @@ export default function Home() {
   return (
     <DashboardLayout activeMenu="Dashboard">
       <div className="my-5 mx-auto">
-        <h1 className="text-xl font-bold">Welcome to Dashboard</h1>
+        <h1 className="text-xl font-bold dark:text-white">Welcome to Dashboard</h1>
 
         {loading ? (
           <div className="py-10 text-center">Loading...</div>

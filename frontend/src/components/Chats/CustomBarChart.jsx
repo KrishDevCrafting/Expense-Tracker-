@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   BarChart,
   Bar,
@@ -8,8 +8,11 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const CustomBarChart = ({ data = [] }) => {
+  const { darkMode } = useContext(ThemeContext);
+
   // determine x-axis key from first item (fallbacks)
   const xKey =
     data && data.length
@@ -34,11 +37,11 @@ const CustomBarChart = ({ data = [] }) => {
       const amount = item.amount ?? item.value ?? 0;
 
       return (
-        <div className="bg-white shadow-md rounded-lg p-2 border">
-          <p className="text-xs font-semibold text-purple-800 mb-1">{label}</p>
-          <p className="text-sm text-gray-600">
+        <div className="bg-white dark:bg-[#2a2a3d] shadow-md rounded-lg p-2 border dark:border-white/10">
+          <p className="text-xs font-semibold text-purple-800 dark:text-purple-300 mb-1">{label}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-300">
             Amount:
-            <span className="text-sm font-medium text-gray-900">₹{amount}</span>
+            <span className="text-sm font-medium text-gray-900 dark:text-white">₹{amount}</span>
           </p>
         </div>
       );
@@ -47,16 +50,16 @@ const CustomBarChart = ({ data = [] }) => {
   };
 
   return (
-    <div className="bg-white mt-6">
+    <div className="bg-white dark:bg-transparent mt-6">
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data || []}>
           <CartesianGrid stroke="none" />
           <XAxis
             // 👇 MODIFIED: Changed fallback from "name" to "source"
             dataKey={xKey || "source"}
-            tick={{ fontSize: 12, fill: "#555" }}
+            tick={{ fontSize: 12, fill: darkMode ? "#9ca3af" : "#555" }}
           />
-          <YAxis tick={{ fontSize: 12, fill: "#555" }} stroke="none" />
+          <YAxis tick={{ fontSize: 12, fill: darkMode ? "#9ca3af" : "#555" }} stroke="none" />
           <Tooltip content={<CustomTooltip />} />
 
           <Bar dataKey="amount" fill="#875cf5" radius={[10, 10, 0, 0]} />

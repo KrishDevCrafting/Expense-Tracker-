@@ -9,7 +9,7 @@ export const CustomLegend = ({ payload }) => {
             className="w-3 h-3 rounded-full"
             style={{ background: entry.color }}
           ></div>
-          <span className="text-xs text-gray-700 font-medium">
+          <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">
             {entry.value}
           </span>
         </div>

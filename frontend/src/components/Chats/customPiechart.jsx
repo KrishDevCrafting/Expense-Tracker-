@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   PieChart,
   Pie,
@@ -9,6 +9,7 @@ import {
 } from "recharts";
 import { CustomTooltip } from "./CustomTooltip";
 import { CustomLegend } from "./CustomLegend";
+import { ThemeContext } from "../../context/ThemeContext";
 
 export const CustomPiechart = ({
   data,
@@ -17,6 +18,8 @@ export const CustomPiechart = ({
   totalAmount,
   showTextAnchor,
 }) => {
+  const { darkMode } = useContext(ThemeContext);
+
   return (
     <div>
       <ResponsiveContainer width="100%" height={380}>
@@ -46,7 +49,7 @@ export const CustomPiechart = ({
                 y="50%"
                 dy={-25}
                 textAnchor="middle"
-                fill="#666"
+                fill={darkMode ? "#9ca3af" : "#666"}
                 fontSize="14px"
               >
                 {label}
@@ -56,7 +59,7 @@ export const CustomPiechart = ({
                 y="50%"
                 dy={8}
                 textAnchor="middle"
-                fill="#333"
+                fill={darkMode ? "#fff" : "#333"}
                 fontSize="24px"
                 fontWeight="600"
               >

@@ -6,13 +6,13 @@ import moment from "moment";
 const IncomeList = ({ transactions = [], onDelete, onDownload }) => {
   return (
     <>
-      <div>IncomeList</div>
+      <div className="dark:text-white">IncomeList</div>
 
-      <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+      <div className="bg-white dark:bg-[#1e1e2f] p-4 rounded-2xl shadow-sm dark:shadow-none border border-gray-100 dark:border-white/10">
         <div className="flex items-center justify-between">
-          <h5 className="text-lg">Income Source</h5>
+          <h5 className="text-lg dark:text-white">Income Source</h5>
           <button
-            className="flex items-center gap-2 text-sm text-gray-700"
+            className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
             onClick={onDownload}
           >
             <LuDownload className="text-base" />
@@ -22,7 +22,7 @@ const IncomeList = ({ transactions = [], onDelete, onDownload }) => {
 
         <div className="mt-4">
           {transactions.length === 0 ? (
-            <p className="text-sm text-gray-400">No income records.</p>
+            <p className="text-sm text-gray-400 dark:text-gray-500">No income records.</p>
           ) : (
             transactions.map((income) => (
               <TransactionInfoCard
