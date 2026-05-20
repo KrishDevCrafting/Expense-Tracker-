@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { LuPlug } from "react-icons/lu";
+import { LuPlus } from "react-icons/lu";
 import { prepareExpenseBarChartData } from "../../utils/helper";
 import CustomLineChart from "../Chats/CustomLineChart";
 
@@ -28,7 +28,7 @@ const ExpenseOverview = ({ transactions, onExpenseIncome }) => {
           aria-label="Add Expense"
           className="flex items-center gap-2 bg-purple-500 text-white px-3 py-2 rounded-md hover:bg-red-700 transition"
         >
-          <LuPlug className="text-lg" />
+          <LuPlus className="text-lg" />
           <span className="text-sm font-medium">Add Expense</span>
         </button>
       </div>

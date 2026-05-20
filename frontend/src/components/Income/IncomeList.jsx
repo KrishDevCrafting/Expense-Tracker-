@@ -6,8 +6,6 @@ import moment from "moment";
 const IncomeList = ({ transactions = [], onDelete, onDownload }) => {
   return (
     <>
-      <div className="dark:text-white">IncomeList</div>
-
       <div className="bg-white dark:bg-[#1e1e2f] p-4 rounded-2xl shadow-sm dark:shadow-none border border-gray-100 dark:border-white/10">
         <div className="flex items-center justify-between">
           <h5 className="text-lg dark:text-white">Income Source</h5>

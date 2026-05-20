@@ -16,6 +16,7 @@ import RecentIncomeWithChart from "../components/Dashboard/RecentIncomeWithChart
 import RecentIncome from "../components/Dashboard/RecentIncome";
 import WelcomeBanner from "../components/Dashboard/WelcomeBanner";
 import BudgetProgress from "../components/Dashboard/BudgetProgress";
+import { DashboardSkeleton } from "../components/Dashboard/DashboardSkeleton";
 
 export default function Home() {
   useUserAuth();
@@ -49,7 +50,7 @@ export default function Home() {
     <DashboardLayout activeMenu="Dashboard">
       <div className="my-5 mx-auto">
         {loading ? (
-          <div className="py-10 text-center">Loading...</div>
+          <DashboardSkeleton />
         ) : (
           <>
             {/* Welcome Banner */}
