@@ -51,7 +51,7 @@ const Login = () => {
 
   return (
     <AuthLayout>
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-transparent py-12 px-4">
+      <div className="h-full flex items-center justify-center bg-gray-50 dark:bg-transparent py-12 px-4">
         <div className="w-full max-w-md">
           <div className="bg-white dark:bg-[#1e1e2f] shadow-md dark:shadow-lg rounded-2xl p-8 border border-transparent dark:border-white/10">
             <div className="flex flex-col items-center mb-6">
