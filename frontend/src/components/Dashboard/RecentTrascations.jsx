@@ -11,11 +11,25 @@ export const RecentTransactions = ({ transactions = [], transaction = [], onSeeM
     : (Array.isArray(transaction) ? transaction : []);
 
   return (
-    <div className="bg-white dark:bg-[#1e1e2f] p-6 rounded-2xl shadow-gray-100 dark:shadow-none border border-gray-200/50 dark:border-white/10">
+    <div className="card relative overflow-hidden">
+      {/* Decorative gradient orb */}
+      <div
+        className="absolute -top-16 -left-16 w-32 h-32 rounded-full opacity-[0.04] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, #8B5CF6 0%, transparent 70%)",
+        }}
+      />
+
       <div className="flex items-center justify-between">
-        <h5 className="text-lg dark:text-white">Recent Transactions</h5>
+        <div>
+          <h5 className="text-lg font-bold dark:text-white">Recent Transactions</h5>
+          <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
+            Latest activity
+          </p>
+        </div>
         <button
-          className="flex items-center gap-3 text-[12px] font-medium text-gray-700 dark:text-gray-300 hover:text-purple-500 bg-gray-50 dark:bg-white/5 hover:bg-purple-50 dark:hover:bg-purple-500/10 px-4 py-1.5 rounded-lg border border-gray-200/50 dark:border-white/10 cursor-pointer"
+          className="card-btn flex items-center gap-1"
           onClick={onSeeMore}
         >
           See All <LuArrowRight className="text-base" />

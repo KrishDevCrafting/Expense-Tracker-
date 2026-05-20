@@ -94,7 +94,7 @@ export default function Home() {
 
               <RecentIncomeWithChart
                 data={
-                  dashboardData?.last30daysIncome?.transaction?.slice(0, 4) ||
+                  dashboardData?.last60daysIncome?.transaction?.slice(0, 4) ||
                   []
                 }
                 totalIncome={dashboardData?.totalIncome || 0}
