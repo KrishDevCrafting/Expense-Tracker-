@@ -33,7 +33,7 @@ const CustomTooltip = ({ active, payload, label, darkMode }) => {
           className="text-lg font-bold"
           style={{ color: darkMode ? "#fff" : "#1f2937" }}
         >
-          ${Number(amount).toLocaleString()}
+          ₹{Number(amount).toLocaleString()}
         </p>
       </div>
     );

@@ -65,7 +65,7 @@ export const TransactionInfoCard = ({
             }}
           >
             <span>
-              {isIncome ? "+" : "-"}${Number(amount).toLocaleString()}
+              {isIncome ? "+" : "-"}₹{Number(amount).toLocaleString()}
             </span>
             {isIncome ? (
               <LuTrendingUp size={14} />

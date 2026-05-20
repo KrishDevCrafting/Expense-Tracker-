@@ -58,7 +58,7 @@ export const InfoCard = ({ icon, label, value, color }) => {
             {label}
           </h6>
           <span className="text-2xl font-bold text-gray-800 dark:text-white tracking-tight">
-            ${value}
+            ₹{value}
           </span>
         </div>
       </div>

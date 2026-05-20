@@ -56,7 +56,7 @@ const CustomBarChart = ({ data = [] }) => {
             {label}
           </p>
           <p className="text-lg font-bold" style={{ color: darkMode ? "#fff" : "#1f2937" }}>
-            ${Number(amount).toLocaleString()}
+            ₹{Number(amount).toLocaleString()}
           </p>
         </div>
       );

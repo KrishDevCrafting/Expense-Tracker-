@@ -48,7 +48,7 @@ export const FinanceOverview = ({
       <CustomPiechart
         data={balanceData}
         label="Total Balance"
-        totalAmount={`$${totalBalance.toLocaleString()}`}
+        totalAmount={`₹${totalBalance.toLocaleString()}`}
         colors={COLORS}
         showTextAnchor
       />

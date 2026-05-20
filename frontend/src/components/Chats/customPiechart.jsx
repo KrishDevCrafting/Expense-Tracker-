@@ -34,7 +34,7 @@ const CustomTooltipContent = ({ active, payload, colors }) => {
           </p>
         </div>
         <p className="text-lg font-bold text-white pl-4">
-          ${Number(payload[0].value).toLocaleString()}
+          ₹{Number(payload[0].value).toLocaleString()}
         </p>
       </div>
     );
@@ -84,7 +84,7 @@ const CustomLegendContent = ({ data, colors, activeIndex, onHover }) => {
               className="text-xs font-bold"
               style={{ color: colors[index % colors.length] }}
             >
-              ${Number(entry.amount).toLocaleString()}
+              ₹{Number(entry.amount).toLocaleString()}
             </span>
           </div>
         );

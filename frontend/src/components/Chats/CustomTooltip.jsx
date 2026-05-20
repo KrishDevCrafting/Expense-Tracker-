@@ -10,7 +10,7 @@ export const CustomTooltip = ({ active, payload }) => {
         <p className="text-sm text-gray-600 dark:text-gray-300">
           Amount:{" "}
           <span className="text-sm font-bold text-gray-900 dark:text-white">
-            ${Number(payload[0].value).toLocaleString()}
+            ₹{Number(payload[0].value).toLocaleString()}
           </span>
         </p>
       </div>

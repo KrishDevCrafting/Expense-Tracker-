@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // 1. Import useNavigate
+import { useNavigate } from "react-router-dom";
 import { DashboardLayout } from "../Layout/DashboardLayout";
 import { useUserAuth } from "../hooks/useUserAuth";
 import axiosInstance from "../utils/axios";
@@ -14,9 +14,12 @@ import { ExpenseTransaction } from "../components/Dashboard/ExpenseTransaction";
 import { Last30DaysExpense } from "../components/Dashboard/Last30DaysExpense";
 import RecentIncomeWithChart from "../components/Dashboard/RecentIncomeWithChart";
 import RecentIncome from "../components/Dashboard/RecentIncome";
+import WelcomeBanner from "../components/Dashboard/WelcomeBanner";
+import BudgetProgress from "../components/Dashboard/BudgetProgress";
+
 export default function Home() {
   useUserAuth();
-  const navigate = useNavigate(); // 2. Initialize navigate
+  const navigate = useNavigate();
 
   const [dashboardData, setDashboardData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -45,12 +48,18 @@ export default function Home() {
   return (
     <DashboardLayout activeMenu="Dashboard">
       <div className="my-5 mx-auto">
-        <h1 className="text-xl font-bold dark:text-white">Welcome to Dashboard</h1>
-
         {loading ? (
           <div className="py-10 text-center">Loading...</div>
         ) : (
           <>
+            {/* Welcome Banner */}
+            <WelcomeBanner
+              totalBalance={dashboardData?.totalBalance || 0}
+              totalIncome={dashboardData?.totalIncome || 0}
+              totalExpense={dashboardData?.totalExpense || 0}
+            />
+
+            {/* Info Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <InfoCard
                 icon={<IoMdCard />}
@@ -71,6 +80,16 @@ export default function Home() {
                 color="bg-red-500"
               />
             </div>
+
+            {/* Spending Meter — full width */}
+            <div className="mt-6">
+              <BudgetProgress
+                totalIncome={dashboardData?.totalIncome || 0}
+                totalExpense={dashboardData?.totalExpense || 0}
+              />
+            </div>
+
+            {/* Charts & Transactions Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
               <RecentTransactions
                 transaction={dashboardData?.recentTransactions || []}
